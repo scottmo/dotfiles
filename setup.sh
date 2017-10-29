@@ -5,8 +5,9 @@ set -e
 
 # constants
 DOTFILES_ROOT=$HOME/dotfiles
-BACKUP_DIR=$HOME/dotfiles.bak
+BACKUP_DIR=$DOTFILES_ROOT/backup
 INSTALLED=$BACKUP_DIR/installed
+LOCAL_DIR=$DOTFILES_ROOT/_local_
 
 # imports
 source $DOTFILES_ROOT/shell/lib.sh
@@ -128,6 +129,7 @@ main() {
     cd $DOTFILES_ROOT
 
     mkdir -p $BACKUP_DIR
+    mkdir -p $LOCAL_DIR
 
     touch $INSTALLED
 
