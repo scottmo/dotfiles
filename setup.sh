@@ -84,7 +84,7 @@ setup_git () {
 }
 
 setup_zsh () {
-    confirmRun "Setup zsh?" "shell/zsh/install_zim.sh"
+    confirmRun "Setup zsh?" "shell/zsh/setup.sh"
 }
 
 setup_mac () {
