@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+#
+# history
+# 
+export HISTCONTROL=ignoredups:erasedups:ignorespace
+export HISTSIZE=5000
+
+#
+# load base + theme
+#
+export SHELL='bash'
+
+source "$HOME/dotfiles/shell/base.sh"
+source "$HOME/dotfiles/shell/bash/themes/simple_path.theme.bash"
+
+#
+# source external files
+#
+try_source "$HOME/dotfiles/shell/bash/plugins" "bash"
+try_source "$HOME/dotfiles/shell/bash/completions" "bash"
