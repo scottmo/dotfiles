@@ -15,6 +15,9 @@ alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 # start screensaver
 alias screensaver="open -a ScreenSaverEngine"
 
+# airport, wifi utlity
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+
 # cd to current finder folder
 cdf () {
     target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
