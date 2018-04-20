@@ -3,7 +3,8 @@ alias gcm='git commit --message'
 alias gamend='git commit --amend --reuse-message HEAD'
 alias gco='git checkout'
 alias gcpn='git cherry-pick --no-commit'
-alias gcp='git cherry-pick -x'
+alias gcpx='git cherry-pick -x'
+alias gcp='git cherry-pick'
 alias gcr='git revert'
 alias greverttobase='git reset HEAD^'
 alias grevertlastcommit='git revert HEAD~'
@@ -28,7 +29,7 @@ alias gdiff-staged='git diff --cached'
 alias gdiff-committed='git diff `thisb` origin/`thisb`'
 
 # branch
-alias gb='git branch'
+alias gb='git branch | cat'
 alias gbc='git checkout -b'
 alias gbx='git branch -d'
 alias gbX='git branch -D'
@@ -40,11 +41,11 @@ thisb () {
     git rev-parse --abbrev-ref HEAD
 }
 
-gpushbranch () {
+gpush () {
     git push origin `thisb`
 }
 
-gpullbranch () {
+gpull () {
     git pull origin `thisb`
 }
 
