@@ -1,5 +1,4 @@
 " Author: Shaocong(Scott) Mo
-" File: autofold.vim
 
 " fold text {{{
     function! NiceFoldText()
@@ -62,6 +61,4 @@
     augroup end
 " }}}
 
-
 " vim: foldmethod=marker foldmarker={{{,}}} foldlevel=0
-
