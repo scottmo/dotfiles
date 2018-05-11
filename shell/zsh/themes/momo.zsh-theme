@@ -5,7 +5,7 @@ CURRENT_BG='NONE'
 # Special Powerline characters
 () {
   local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-  SEGMENT_SEPARATOR='>'
+  SEGMENT_SEPARATOR='✡'
 }
 
 # Begin a segment
@@ -55,7 +55,7 @@ prompt_status() {
 prompt_bar() {
   local branch=$(thisb 2>/dev/null)
   local dir=$(basename $(dirname $PWD))/$(basename $PWD)
-  echo -n "[ %{%F{yellow}%}$dir%{%f%b%k%} ] %{%F{cyan}%}$branch\n"
+  echo -n "%{%f%b%k%}✟ %{%F{yellow}%}$dir %{%f%b%k%}✟ %{%F{cyan}%}$branch\n"
   prompt_segment blue white "¯\_(ツ)_/¯"
 }
 
