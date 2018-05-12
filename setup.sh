@@ -12,7 +12,7 @@ LOCAL_DIR=$DOTFILES_ROOT/_local_
 # imports
 source $DOTFILES_ROOT/shell/lib.sh
 
-confirmRun() {
+run_if_allowed() {
     confirm "$1"
     if is_confirmed; then
         sh $DOTFILES_ROOT/$2
@@ -20,12 +20,11 @@ confirmRun() {
     e_line
 }
 
-backup_file () {
-    local src=$1 dir=$2
-
+backup_file_if_exists () {
+    local src=$1 dest=$BACKUP_DIR
     if [ -f "$src" -o -d "$src" -o -L "$src" ]; then
-        mv "$src" "$dir/$(basename $src).bak"
-        e_success "backed-up $src to $dir/$(basename $src).bak"
+        mv "$src" "$dest/$(basename $src).bak"
+        e_success "backed-up $src to $dest/$(basename $src).bak"
     fi
 }
 
@@ -39,7 +38,7 @@ install_dotfiles () {
             confirm "Install $dst?"
             [[ ! is_confirmed ]] && return
 
-            backup_file $dst $BACKUP_DIR
+            backup_file_if_exists $dst
             echo $dst >> $INSTALLED
 
             if [ $fileext == 'symlink' ]; then
@@ -55,13 +54,11 @@ install_dotfiles () {
 }
 
 setup_bashprofile () {
-    if [ -f $HOME/.bash_profile ]; then
-        backup_file $HOME/.bash_profile
-    fi
+    backup_file_if_exists $HOME/.bash_profile
     echo "[[ -r ~/.bashrc ]] && . ~/.bashrc" >> ~/.bash_profile
 }
 
-setup_tpm() {
+setup_tmux_pm() {
     confirm "Install tmux plugin manager?"
     if is_confirmed; then
         git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -85,18 +82,18 @@ setup_git () {
 }
 
 setup_zsh () {
-    confirmRun "Setup zsh?" "shell/zsh/setup.sh"
+    run_if_allowed "Setup zsh?" "shell/zsh/setup.sh"
 }
 
 setup_mac () {
-    confirmRun "Setup brew?" "install/brew.sh"
+    run_if_allowed "Setup brew?" "install/brew.sh"
 }
 
 install () {
     install_dotfiles
     setup_bashprofile
     setup_zsh
-    setup_tpm
+    setup_tmux_pm
     setup_git
 
     if [ `uname` == "Darwin" ]; then
