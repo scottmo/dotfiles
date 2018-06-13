@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # import utils
-source $DOTFILES_ROOT/shell/lib.sh
+source ~/dotfiles/shell/lib.sh
 
 #
 # install oh my zsh
