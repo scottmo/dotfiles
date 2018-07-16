@@ -1,11 +1,13 @@
 syntax: glob
 
-/target/
-/log/
-/logs/
-/images/
-/tmp/
-/vendor/
+build/
+target/
+log/
+logs/
+images/
+tmp/
+vendor/
+
 *.tags*
 *.gemtags*
 *.csv
@@ -37,8 +39,8 @@ syntax: glob
 *%*
 *@*
 
-/Applications/
-/node_modules/
-/bower_components/
+Applications/
+node_modules/
+bower_components/
 
-/.settings/
+.settings/
