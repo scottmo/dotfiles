@@ -30,7 +30,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-fugitive'
     " show code result inline when run :Codi
     Plug 'metakirby5/codi.vim'
-    Plug 'vim-syntastic/syntastic'
+    Plug 'janko-m/vim-test'
 " }}}
 " File Nav {{{
     " make vim's netwr file browser easy to use
@@ -113,6 +113,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'Shougo/unite.vim'
 " }}}
 " Web Development {{{
+    Plug 'othree/yajs.vim'
+    Plug 'othree/es.next.syntax.vim'
     Plug 'mattn/emmet-vim'
     Plug 'maksimr/vim-jsbeautify'
     Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/bundle/tern_for_vim', 'do': 'npm install tern' }
