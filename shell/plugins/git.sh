@@ -51,3 +51,7 @@ gpull () {
 
 # util
 alias gshrink='git gc --prune=now --aggressive'
+
+gitdl () {
+    svn checkout "${1/tree\/master/trunk}"
+}
