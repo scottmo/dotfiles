@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 # rbenv
-if [ -d "$HOME/.rbenv/bin" ]; then
-    local rubypath="$HOME/.rbenv/bin"
+if [ -d "$HOME/.rbenv/shims" ] && [ hash rbenv >/dev/null 2>&1 ]; then
+    local rubypath="$HOME/.rbenv/shims"
     [[ :$PATH: == *":$rubypath:"* ]] || PATH="$rubypath:$PATH"
     eval "$(rbenv init -)"
 else # use system default
