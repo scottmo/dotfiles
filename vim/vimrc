@@ -65,7 +65,6 @@
         set mousehide       " hide mouse when typing
         set laststatus=2    " always display status line
         set nu              " show number
-        set nocursorline    " do not highlight current line
         set linespace=3     " line spacing in pixel
         set tabpagemax=15   " Only show 15 tabs
         set showmode        " Display the current mode
