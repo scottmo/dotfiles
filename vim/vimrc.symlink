@@ -145,11 +145,13 @@
 
 " Key Mapping {{{
     " New Bindings {{{
-        " let g:mapleader = ","
+        let g:mapleader = ","
+        
+        imap jj <Esc>
 
         " Edit/Reload vimrc
-        " nmap <silent> <leader>ev :e ~/.vimrc<cr>
-        " nmap <silent> <leader>sv :so ~/.vimrc<cr>
+        nmap <silent> <leader>ev :e ~/.vimrc<cr>
+        nmap <silent> <leader>sv :so ~/.vimrc<cr>
 
         " highlight same words under cursor when double click on it
         nmap <2-LeftMouse> *
@@ -217,29 +219,23 @@
         nnoremap Q    q
         nnoremap q    <NOP>
         nnoremap q:   <NOP>
-        " help page
+        " no help page
         nnoremap <F1> <NOP>
         inoremap <F1> <NOP>
-
-        " Start/End
-        inoremap <C-e> <End>
-        inoremap <C-a> <Home>
     " }}}
 " }}}
 
 " Utils {{{
-    " custom scripts
-    set runtimepath^=~/dotfiles/vim/custom_bundle/
-
-    " Indentation {{{
-        command! Indent2 :set ts=2 sts=2 sw=2 | IndentLinesReset
-        command! Indent4 :set ts=4 sts=4 sw=4 | IndentLinesReset
-        command! Indent2to4 :set ts=2 sts=2 sw=2 noet | retab! | set ts=4 sts=4 sw=4 et | retab
-        command! Indent4to2 :set ts=4 sts=4 sw=4 noet | retab! | set ts=2 sts=2 sw=2 et | retab
-    " }}}
-    " Trailing Spaces {{{
-        command! Trim :%s:\s\+$::g
-    " }}}
+    " Indentation
+    command! Indent2 :set ts=2 sts=2 sw=2
+    command! Indent4 :set ts=4 sts=4 sw=4
+    command! Indent2to4 :set ts=2 sts=2 sw=2 noet | retab! | set ts=4 sts=4 sw=4 et | retab
+    command! Indent4to2 :set ts=4 sts=4 sw=4 noet | retab! | set ts=2 sts=2 sw=2 et | retab
+    " Trailing Spaces
+    command! Trim :%s:\s\+$::g
+    " External editor
+    command! Subl exe ':silent !subl %'
+    command! Code exe ':silent !code %'
 " }}}
 
 " Autocmd {{{
@@ -251,14 +247,18 @@
 " }}}
 
 " Plugins {{{
-    " if filereadable(expand("~/dotfiles/vim/plugins.vim"))
-    "     source ~/dotfiles/vim/plugins.vim
-    " endif
+    " custom scripts
+    set runtimepath^=~/dotfiles/vim/custom_bundle/
+
+    source ~/dotfiles/vim/plugins.vim
 " }}}
 
 " Custom config {{{
     syntax enable
+
     set bg=dark
+    color one
+    let g:airline_theme='one'
 
     " local customizations
     if filereadable(expand("~/dotfiles/_local_/local.vimrc"))
