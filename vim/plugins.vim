@@ -1,4 +1,4 @@
-" vim: fdm=marker foldmarker={{{,}}} foldlevel=1
+" vim: fdm=marker foldmarker={{{,}}} foldlevel=0
 
 " Plugin List
 " ------------------------------------------------------------
@@ -64,6 +64,7 @@ call plug#begin('~/.vim/bundle')
             \ 'dir': '~/.vim/bundle/YouCompleteMe',
             \ 'do': './install.py --js-completer --go-completer'
             \ }
+        Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     else
         if has('nvim')
             " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -73,6 +74,8 @@ call plug#begin('~/.vim/bundle')
             Plug 'ncm2/ncm2'
             Plug 'ncm2/ncm2-path'
             Plug 'ncm2/ncm2-bufword'
+            Plug 'ncm2/ncm2-ultisnips'
+            Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         else
             Plug 'ajh17/VimCompletesMe'
         endif
@@ -253,6 +256,10 @@ call plug#end()
         command! -nargs=1 Rename :YcmCompleter RefactorRename <args>
         command! GoTo :YcmCompleter GoTo
         command! Format :YcmCompleter Format
+
+        let g:UltiSnipsExpandTrigger="<c-j>"
+        let g:UltiSnipsJumpForwardTrigger="<c-j>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
     elseif has('nvim')
     " ncm2 {{{
         " enable ncm2 for all buffers
@@ -266,6 +273,10 @@ call plug#end()
         " use <TAB> to select the popup menu
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+        let g:UltiSnipsExpandTrigger="<c-j>"
+        let g:UltiSnipsJumpForwardTrigger="<c-j>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
     " }}}
     endif
 " }}}
