@@ -21,6 +21,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'sheerun/vim-polyglot'
     " # themes
     Plug 'rakr/vim-one'
+    Plug 'morhetz/gruvbox'
 " }}}
 " Utility {{{
     Plug 'christoomey/vim-system-copy'
@@ -31,6 +32,8 @@ call plug#begin('~/.vim/bundle')
     " show code result inline when run :Codi
     Plug 'metakirby5/codi.vim'
     Plug 'janko-m/vim-test'
+    Plug 'Konfekt/FastFold'
+    Plug 'Konfekt/FoldText'
 " }}}
 " File Nav {{{
     " make vim's netwr file browser easy to use
@@ -74,6 +77,7 @@ call plug#begin('~/.vim/bundle')
             Plug 'ncm2/ncm2'
             Plug 'ncm2/ncm2-path'
             Plug 'ncm2/ncm2-bufword'
+            Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
             Plug 'ncm2/ncm2-ultisnips'
             Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
         else
@@ -252,31 +256,48 @@ call plug#end()
     autocmd FileType css command! Beautify :call CSSBeautify()<cr>
 " }}}
 " Autocomplete {{{
-    if s:useYCM == 1
-        command! -nargs=1 Rename :YcmCompleter RefactorRename <args>
-        command! GoTo :YcmCompleter GoTo
-        command! Format :YcmCompleter Format
+if s:useYCM == 1
+    command! -nargs=1 Rename :YcmCompleter RefactorRename <args>
+    command! GoTo :YcmCompleter GoTo
+    command! Format :YcmCompleter Format
 
-        let g:UltiSnipsExpandTrigger="<c-j>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-    elseif has('nvim')
-    " ncm2 {{{
-        " enable ncm2 for all buffers
-        autocmd BufEnter * call ncm2#enable_for_buffer()
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+elseif has('nvim')
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
 
-        " note that you must keep `noinsert` in completeopt, you must not use
-        " `longest`. The others are optional. Read `:help completeopt` for
-        " more info
-        set completeopt=noinsert,menuone,noselect
+    " note that you must keep `noinsert` in completeopt, you must not use
+    " `longest`. The others are optional. Read `:help completeopt` for
+    " more info
+    set completeopt=noinsert,menuone,noselect
 
-        " use <TAB> to select the popup menu
-        inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-        inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    " use <TAB> to select the popup menu
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-        let g:UltiSnipsExpandTrigger="<c-j>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-    " }}}
-    endif
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+endif
+" }}}
+" FastFold {{{
+    nmap zuz <Plug>(FastFoldUpdate)
+    let g:fastfold_savehook = 1
+    let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+    let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
+    let g:markdown_folding = 1
+    let g:tex_fold_enabled = 1
+    let g:vimsyn_folding = 'af'
+    let g:xml_syntax_folding = 1
+    let g:javaScript_fold = 1
+    let g:sh_fold_enabled= 7
+    let g:ruby_fold = 1
+    let g:perl_fold = 1
+    let g:perl_fold_blocks = 1
+    let g:r_syntax_folding = 1
+    let g:rust_fold = 1
+    let g:php_folding = 1
 " }}}
