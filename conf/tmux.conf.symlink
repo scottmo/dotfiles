@@ -20,10 +20,6 @@ bind -n C-k clear-history
 # synchronize inputs across panes
 bind-key y set-window-option synchronize-panes
 
-# vim-like key binding
-set -g status-keys vi
-setw -g mode-keys vi
-
 # ------------------------------------------------------------
 # Mouse control
 # ------------------------------------------------------------
@@ -87,15 +83,10 @@ set-option -g status-right-length 100
 # set -g status-left "#[fg=black]#[bg=blue] #S #[fg=blue]#[bg=black]>#[default]"
 # set -g status-right "#[fg=blue]<#[bg=blue]#[fg=black] %m-%d %H:%M"
 
-set -g status-bg white
-
-# dark theme
 set -g status-left " #[bg=#2a2e34]#[fg=blue][#S]#[bg=#2a2e34] "
 set -g status-right "#[bg=#2a2e34]#[fg=green]⎋#[fg=blue] %m-%d %H:%M"
 
-# white theme
-# set -g status-left " #[bg=white]#[fg=blue][#S]#[bg=white] "
-# set -g status-right "#[bg=white]#[fg=green]⎋#[fg=blue] %m-%d %H:%M"
+source-file ~/dotfiles/conf/cyan.tmuxtheme
 
 # ------------------------------------------------------------
 # Misc
@@ -111,11 +102,15 @@ set -g history-limit 99999
 # ------------------------------------------------------------
 set -g @continuum-restore 'on'
 # List of plugins
-set -g @tpm_plugins '           \
-    tmux-plugins/tpm              \
-    tmux-plugins/tmux-sensible    \
-    tmux-plugins/tmux-resurrect   \
-    tmux-plugins/tmux-continuum   \
+set -g @tpm_plugins '               \
+    tmux-plugins/tpm                \
+    tmux-plugins/tmux-sensible      \
+    tmux-plugins/tmux-resurrect     \
+    tmux-plugins/tmux-continuum     \
+    NHDaly/tmux-better-mouse-mode   \
+    Morantron/tmux-fingers          \
+    tmux-plugins/tmux-pain-control  \
+    tmux-plugins/tmux-yank          \
 '
 # Other examples:
 # github_username/plugin_name    \
