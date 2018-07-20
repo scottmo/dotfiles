@@ -17,9 +17,6 @@ bind-key -n F7 copy-mode
 # clear history
 bind -n C-k clear-history
 
-# synchronize inputs across panes
-bind-key y set-window-option synchronize-panes
-
 # ------------------------------------------------------------
 # Mouse control
 # ------------------------------------------------------------
