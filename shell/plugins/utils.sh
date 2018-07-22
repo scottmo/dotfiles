@@ -23,9 +23,3 @@ man () {
     man "$@"
 }
 
-# ag find
-if hash ag 2>/dev/null; then
-    agf() {
-        find . -name "$1" -type f -exec ag "$2" {} +
-    }
-fi

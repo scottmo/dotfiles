@@ -109,13 +109,11 @@ call plug#begin('~/.vim/bundle')
     " :%ESubstitute/from/to/gc to replace in search results
     Plug 'eugen0329/vim-esearch'
 
-    if !has("gui_running")
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-        Plug 'junegunn/fzf.vim'
-    endif
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
 
-    Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
-    Plug 'FelikZ/ctrlp-py-matcher'
+    " Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
+    " Plug 'FelikZ/ctrlp-py-matcher'
 
     Plug 'Shougo/unite.vim'
 " }}}
@@ -191,26 +189,37 @@ call plug#end()
     nmap s <Plug>(easymotion-s2)
 " }}}
 " fzf {{{
-    nnoremap <C-o> :FZF<cr>
+    nnoremap <C-p> :FZF<cr>
+    nnoremap <C-f> :BLines<cr>
+    nnoremap <C-b> :Buffers<cr>
+
+    command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+        \   <bang>0 ? fzf#vim#with_preview('up:60%')
+        \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+        \   <bang>0)
 " }}}
 " CtrlP {{{
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-    let g:ctrlp_clear_cache_on_exit = 0
-    let g:ctrlp_max_files = 0
-
-    " use ag to search, use .agignore to exclude files
-    " let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
-    nnoremap <C-b> :CtrlPBuffer<cr>
-
-    " CtrlP extensions --------------------
-    " funky
-    let g:ctrlp_extensions = ['funky']
-    let g:ctrlp_funky_syntax_highlight = 1
-    let g:ctrlp_funky_use_cache = 1
-    nnoremap <C-f> :CtrlPFunky<cr>
-    " matching
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    " let g:ctrlp_working_path_mode = 'ra'
+    " let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+    " let g:ctrlp_clear_cache_on_exit = 0
+    " let g:ctrlp_max_files = 0
+    "
+    " let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+    " let g:ctrlp_use_caching = 0
+    " let g:ctrlp_match_window_reversed = 0
+    "
+    " nnoremap <C-b> :CtrlPBuffer<cr>
+    "
+    " " CtrlP extensions --------------------
+    " " funky
+    " let g:ctrlp_extensions = ['funky']
+    " let g:ctrlp_funky_syntax_highlight = 1
+    " let g:ctrlp_funky_use_cache = 1
+    " nnoremap <C-f> :CtrlPFunky<cr>
+    " " matching
+    " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " }}}
 " Multicurosr {{{
     let g:multi_cursor_use_default_mapping=0
@@ -300,4 +309,6 @@ endif
     let g:r_syntax_folding = 1
     let g:rust_fold = 1
     let g:php_folding = 1
+
+    set foldlevel=10
 " }}}

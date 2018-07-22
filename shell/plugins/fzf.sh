@@ -6,5 +6,7 @@ if [ -d ~/.fzf ]; then
     elif [ "$SHELL" = 'bash' ]; then
         try_source ~/.fzf.bash
     fi
-    export FZF_DEFAULT_COMMAND='ag -l -g ""'
+
+    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+    export FZF_ALT_C_COMMAND='fd --type d . --color=never'
 fi
