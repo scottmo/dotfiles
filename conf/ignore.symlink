@@ -1,13 +1,10 @@
 syntax: glob
 
-build/
-target/
 log/
 logs/
 images/
 tmp/
 vendor/
-allure_results/
 .cache/
 
 *.woff
@@ -47,6 +44,5 @@ allure_results/
 
 Applications/
 node_modules/
-bower_components/
 
 .settings/
