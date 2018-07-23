@@ -216,7 +216,6 @@
 
         " Disabled
         nnoremap Q    q
-        nnoremap q    <NOP>
         nnoremap q:   <NOP>
         " no help page
         nnoremap <F1> <NOP>
