@@ -237,7 +237,7 @@ call plug#end()
     \ }
 
     cal wildfire#triggers#Add("<ENTER>", {
-        \ "html,xml" : ["at", "it"],
+        \ "html,xml,htmlm4" : ["at", "it"],
     \ })
 " }}}
 " emmet {{{
