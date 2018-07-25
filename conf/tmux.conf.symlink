@@ -30,6 +30,11 @@ bind -n WheelDownPane select-pane -t= \;                 send-keys -M
 # ------------------------------------------------------------
 # GUI
 # ------------------------------------------------------------
+
+# Alert bell
+set-window-option -g visual-bell on
+set-window-option -g bell-action other
+
 # color support
 set-option -g default-terminal "xterm-256color"
 
