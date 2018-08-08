@@ -21,7 +21,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'sheerun/vim-polyglot'
     " # themes
     Plug 'rakr/vim-one'
-    Plug 'morhetz/gruvbox'
 " }}}
 " Utility {{{
     Plug 'christoomey/vim-system-copy'
