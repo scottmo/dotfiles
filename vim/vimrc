@@ -162,8 +162,8 @@
 
         nmap <silent> <leader>/ :nohlsearch<cr>
 
-        nnoremap th :tabnext<CR>
-        nnoremap tl :tabprev<CR>
+        nnoremap th :tabprev<CR>
+        nnoremap tl :tabnext<CR>
         nnoremap tn :tabnew<CR>
 
         map <F5> :let &background = (&background == "dark" ? "light" : "dark")<cr>
