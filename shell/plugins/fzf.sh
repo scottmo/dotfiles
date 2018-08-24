@@ -7,6 +7,6 @@ if [ -d ~/.fzf ]; then
         try_source ~/.fzf.bash
     fi
 
-    export FZF_DEFAULT_COMMAND='fd --type f --color=never'
-    export FZF_ALT_C_COMMAND='fd --type d . --color=never'
+    export FZF_DEFAULT_COMMAND='fd -L --type f --color=never'
+    export FZF_ALT_C_COMMAND='fd -L --type d . --color=never'
 fi
