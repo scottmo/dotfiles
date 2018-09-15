@@ -6,15 +6,14 @@ call plug#begin('~/.vim/bundle')
 " GUI {{{
     Plug 'mhinz/vim-startify'
     Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'godlygeek/csapprox'
     " # colorful parentheses
-    Plug 'luochen1990/rainbow' " , { 'for': ['js', 'java', 'c', 'cpp'] }
+    " Plug 'junegunn/rainbow_parentheses.vim'
     " # show function on the side
     " Plug 'majutsushi/tagbar', { 'for': ['c', 'cpp', 'java'] }
     " # show colors for css values
-    Plug 'gorodinskiy/vim-coloresque'
-    " Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'ap/vim-css-color'
     Plug 'Yggdroot/indentLine'
     Plug 'airblade/vim-gitgutter'
     " # syntax highlighting for a lot of filetypes
@@ -33,12 +32,17 @@ call plug#begin('~/.vim/bundle')
     Plug 'janko-m/vim-test'
     Plug 'Konfekt/FastFold'
     Plug 'Konfekt/FoldText'
+    Plug 'tmilloff/vim-address-bar'
+    Plug 'nfvs/vim-perforce'
+    Plug 'ngemily/vim-vp4'
 " }}}
 " File Nav {{{
     " make vim's netwr file browser easy to use
     Plug 'tpope/vim-vinegar'
     " side bar file browser
-    Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs'
+    Plug 'scrooloose/nerdtree'
+    " Plug 'jistr/vim-nerdtree-tabs'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 " Edit {{{
     " convert between multiline code and one liner
@@ -54,11 +58,14 @@ call plug#begin('~/.vim/bundle')
     Plug 'vim-scripts/SearchComplete'
 
     " auto insert (){}[]``````
-    Plug 'jiangmiao/auto-pairs'
+    " Plug 'jiangmiao/auto-pairs'
+    Plug 'rstacruz/vim-closer'
     " auto insert endif, done, etc
     Plug 'tpope/vim-endwise'
     " auto close html tags
     Plug 'alvan/vim-closetag'
+
+    Plug 'vim-scripts/marvim'
 
     let s:useYCM = 1
     if s:useYCM == 1
@@ -85,7 +92,7 @@ call plug#begin('~/.vim/bundle')
     endif
 
     " async syntax check
-    Plug 'w0rp/ale'
+    " Plug 'w0rp/ale'
 " }}}
 " Search & Replace/Movement {{{
     " util for search and replace in multiple files
@@ -145,13 +152,6 @@ call plug#end()
 
     let g:airline_theme='one'
 " }}}
-" rainbow {{{
-    let g:rainbow_active = 0
-    let g:rainbow_conf = {
-        \   'guifgs' : ['royalblue3', 'darkorange3', 'seagreen3', '#ec8f6f'],
-        \   'ctermfgs': ['141', '196', '112', '208', '129']
-        \}
-" }}}
 " NerdTree {{{
     nmap <leader>n :NERDTreeTabsToggle<CR>
     nmap <leader>t :NERDTreeFind<CR>
@@ -163,6 +163,9 @@ call plug#end()
     let NERDTreeMouseMode=2
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
+    let NERDTreeAutoDeleteBuffer=1
+    let NERDTreeMinimalUI = 1
+    let NERDTreeDirArrows = 1
     let g:nerdtree_tabs_open_on_gui_startup=0
 " }}}
 " indent-line {{{
@@ -308,4 +311,13 @@ endif
     let g:php_folding = 1
 
     set foldlevel=10
+" }}}
+" vim-esearch {{{
+    let g:esearch = {
+            \ 'adapter':    'rg --follow',
+            \ 'backend':    'nvim',
+            \ 'out':        'win',
+            \ 'batch_size': 1000,
+            \ 'use':        ['visual', 'hlsearch', 'last'],
+            \}
 " }}}
