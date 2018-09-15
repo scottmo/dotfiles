@@ -1,7 +1,6 @@
 # Commit
 alias gcm='git commit --message'
 alias gamend='git commit --amend --reuse-message HEAD'
-alias gco='git checkout'
 alias gcpn='git cherry-pick --no-commit'
 alias gcpx='git cherry-pick -x'
 alias gcp='git cherry-pick'
@@ -23,11 +22,6 @@ gsync () {
     git pull upstream "$branch" && git push origin "$branch"
 }
 
-# diff
-alias gdiff-unstaged='git diff'
-alias gdiff-staged='git diff --cached'
-alias gdiff-committed='git diff `thisb` origin/`thisb`'
-
 # branch
 alias gb='git branch | cat'
 alias gbc='git checkout -b'
@@ -37,16 +31,12 @@ alias gbm='git branch -m'
 alias gbM='git branch -M'
 alias gco='git checkout'
 
-thisb () {
+thisb() {
     git rev-parse --abbrev-ref HEAD
 }
 
-gpush () {
-    git push origin `thisb`
-}
-
-gpull () {
-    git pull origin `thisb`
+gsetupstream() {
+    git branch --set-upstream-to=origin/$1 $1
 }
 
 # util
