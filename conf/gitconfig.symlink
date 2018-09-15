@@ -1,0 +1,6 @@
+# global gitconfig
+[includeIf "gitdir:~/devwork/"]
+    path = ~/dotfiles/_local_/work/gitconfig
+
+[includeIf "gitdir:~/devpersonal/"]
+    path = ~/dotfiles/_local_/gitconfig
