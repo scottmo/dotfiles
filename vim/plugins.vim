@@ -5,7 +5,8 @@
 call plug#begin('~/.vim/bundle')
 " GUI {{{
     Plug 'mhinz/vim-startify'
-    Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline'
+    Plug 'itchyny/lightline.vim'
     Plug 'ap/vim-css-color' " # show colors for css values
     Plug 'Yggdroot/indentLine'
     Plug 'airblade/vim-gitgutter'
@@ -67,12 +68,7 @@ call plug#begin('~/.vim/bundle')
         Plug 'ncm2/ncm2-ultisnips'
         Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
     else
-        " Plug 'ajh17/VimCompletesMe'
-        Plug 'prabirshrestha/async.vim'
-        Plug 'prabirshrestha/asyncomplete.vim'
-        Plug 'prabirshrestha/asyncomplete-buffer.vim'
-        Plug 'prabirshrestha/asyncomplete-file.vim'
-        Plug 'yami-beta/asyncomplete-omni.vim'
+        Plug 'ajh17/VimCompletesMe' " this also works with tern
     endif
 
     " async syntax check
@@ -114,19 +110,30 @@ call plug#end()
     let g:startify_session_dir='~/.vim/sessions/'
 " }}}
 " Airline {{{
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    let g:airline_section_b='' " hunks, branch
-    let g:airline_section_y='%{&ff}' " file format
-    let g:airline_section_z='%c' " line/column
-    let g:airline_section_c='%t'
-
-    let g:airline#extensions#whitespace#trailing_format = '\s\+$[%s]'
-    let g:airline#extensions#whitespace#mixed_indent_format = '\t\s[%s]'
-    let g:airline#extensions#whitespace#long_format = 'long[%s]'
-    let g:airline#extensions#whitespace#mixed_indent_file_format = '\t[%s]'
-
-    let g:airline_theme='one'
+    " let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#fnamemod = ':t'
+    " let g:airline_section_b='' " hunks, branch
+    " let g:airline_section_y='%{&ff}' " file format
+    " let g:airline_section_z='%c' " line/column
+    " let g:airline_section_c='%t'
+    "
+    " let g:airline#extensions#whitespace#trailing_format = '\s\+$[%s]'
+    " let g:airline#extensions#whitespace#mixed_indent_format = '\t\s[%s]'
+    " let g:airline#extensions#whitespace#long_format = 'long[%s]'
+    " let g:airline#extensions#whitespace#mixed_indent_file_format = '\t[%s]'
+    "
+    " let g:airline_theme='one'
+" }}}
+" lightline {{{
+    let g:lightline = {
+    \   'colorscheme': 'one'
+    \ }
+    let g:lightline.separator = {
+    \   'left': '', 'right': ''
+    \}
+    let g:lightline.subseparator = {
+    \   'left': '', 'right': '' 
+    \}
 " }}}
 " NerdTree {{{
     nmap <leader>n :NERDTreeToggle<CR>
@@ -246,31 +253,6 @@ call plug#end()
     else
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-        let g:asyncomplete_remove_duplicates = 1
-        let g:asyncomplete_smart_completion = 1
-        let g:asyncomplete_auto_popup = 1
-        set completeopt-=preview
-
-        call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-            \ 'name': 'omni',
-            \ 'whitelist': ['*'],
-            \ 'blacklist': ['c', 'cpp', 'html'],
-            \ 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#omni#completor')
-            \  }))
-        call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-            \ 'name': 'buffer',
-            \ 'whitelist': ['*'],
-            \ 'blacklist': ['go'],
-            \ 'completor': function('asyncomplete#sources#buffer#completor'),
-            \ }))
-        call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-            \ 'name': 'file',
-            \ 'whitelist': ['*'],
-            \ 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#file#completor')
-            \ }))
     endif
 " }}}
 " FastFold {{{
