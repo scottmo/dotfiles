@@ -13,6 +13,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'sheerun/vim-polyglot' " # syntax highlighting for a lot of filetypes
     " # themes
     Plug 'rakr/vim-one'
+    Plug 'ErichDonGubler/vim-sublime-monokai'
+    Plug 'phanviet/vim-monokai-pro'
 " }}}
 " Utility {{{
     Plug 'christoomey/vim-system-copy'
