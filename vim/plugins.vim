@@ -5,7 +5,6 @@
 call plug#begin('~/.vim/bundle')
 " GUI {{{
     Plug 'mhinz/vim-startify'
-    " Plug 'vim-airline/vim-airline'
     Plug 'itchyny/lightline.vim'
     Plug 'ap/vim-css-color' " # show colors for css values
     Plug 'Yggdroot/indentLine'
@@ -22,7 +21,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-fugitive' " git utilities wrapper
     Plug 'metakirby5/codi.vim' " show code result inline when run :Codi
-    Plug 'janko-m/vim-test'
     Plug 'Konfekt/FastFold'
     Plug 'Konfekt/FoldText'
     Plug 'tmilloff/vim-address-bar'
@@ -44,7 +42,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'vim-scripts/SearchComplete'
 
     " Plug 'jiangmiao/auto-pairs' " auto insert (){}[]``````
-    Plug 'rstacruz/vim-closer' " auto insert (){}[]``````
+    Plug 'cohama/lexima.vim'
+    " Plug 'rstacruz/vim-closer' " auto insert (){}[]``````
     Plug 'tpope/vim-endwise' " auto insert endif, done, etc
     Plug 'alvan/vim-closetag' " auto close html tags
 
@@ -110,21 +109,6 @@ call plug#end()
 " ------------------------------------------------------------
 " startify {{{
     let g:startify_session_dir='~/.vim/sessions/'
-" }}}
-" Airline {{{
-    " let g:airline#extensions#tabline#enabled = 1
-    " let g:airline#extensions#tabline#fnamemod = ':t'
-    " let g:airline_section_b='' " hunks, branch
-    " let g:airline_section_y='%{&ff}' " file format
-    " let g:airline_section_z='%c' " line/column
-    " let g:airline_section_c='%t'
-    "
-    " let g:airline#extensions#whitespace#trailing_format = '\s\+$[%s]'
-    " let g:airline#extensions#whitespace#mixed_indent_format = '\t\s[%s]'
-    " let g:airline#extensions#whitespace#long_format = 'long[%s]'
-    " let g:airline#extensions#whitespace#mixed_indent_file_format = '\t[%s]'
-    "
-    " let g:airline_theme='one'
 " }}}
 " lightline {{{
     let g:lightline = {
@@ -274,10 +258,11 @@ call plug#end()
 " }}}
 " vim-esearch {{{
     let g:esearch = {
-            \ 'adapter':    'rg --follow',
+            \ 'adapter':    'rg',
             \ 'backend':    'nvim',
             \ 'out':        'win',
             \ 'batch_size': 1000,
-            \ 'use':        ['visual', 'hlsearch', 'last'],
+            \ 'use':        ['visual', 'hlsearch', 'last', 'word_under_cursor'],
             \}
+    let g:esearch#adapter#rg#options = '--follow --iglob "!target/*"'
 " }}}

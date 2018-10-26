@@ -166,8 +166,6 @@
         nnoremap tl :tabnext<CR>
         nnoremap tn :tabnew<CR>
 
-        map <F5> :let &background = (&background == "dark" ? "light" : "dark")<cr>
-
         noremap <leader>y "*y
         noremap <leader>p "*p
 
@@ -225,6 +223,8 @@
 " }}}
 
 " Utils {{{
+    " Toggle background color
+    command! BG :let &background = (&background == "dark" ? "light" : "dark")
     " Indentation
     command! Indent2 :set ts=2 sts=2 sw=2
     command! Indent4 :set ts=4 sts=4 sw=4
