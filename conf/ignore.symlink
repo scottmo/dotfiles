@@ -6,6 +6,7 @@ images/
 tmp/
 vendor/
 .cache/
+target/
 
 *.woff
 *.woff2
