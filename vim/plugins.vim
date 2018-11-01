@@ -3,6 +3,7 @@
 " Plugin List
 " ------------------------------------------------------------
 call plug#begin('~/.vim/bundle')
+Plug '~/dotfiles/vim/custom_bundle'
 " GUI {{{
     Plug 'mhinz/vim-startify'
     Plug 'itchyny/lightline.vim'
@@ -14,6 +15,7 @@ call plug#begin('~/.vim/bundle')
     Plug 'rakr/vim-one'
     Plug 'ErichDonGubler/vim-sublime-monokai'
     Plug 'phanviet/vim-monokai-pro'
+    Plug 'NLKNguyen/papercolor-theme'
 " }}}
 " Utility {{{
     Plug 'christoomey/vim-system-copy'
@@ -21,8 +23,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-fugitive' " git utilities wrapper
     Plug 'metakirby5/codi.vim' " show code result inline when run :Codi
-    Plug 'Konfekt/FastFold'
-    Plug 'Konfekt/FoldText'
     Plug 'tmilloff/vim-address-bar'
     Plug 'nfvs/vim-perforce'
     " Plug 'ngemily/vim-vp4'
@@ -34,6 +34,10 @@ call plug#begin('~/.vim/bundle')
     Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 " Edit {{{
+    " Plug 'Konfekt/FastFold'
+    " Plug 'Konfekt/FoldText'
+    Plug 'pseewald/vim-anyfold'
+
     Plug 'AndrewRadev/splitjoin.vim' " convert between multiline code and one liner
     Plug 'tpope/vim-repeat' " make many commands repeatable with .
     Plug 'gcmt/wildfire.vim' " select textobject based on scope
@@ -73,17 +77,14 @@ call plug#begin('~/.vim/bundle')
     endif
 
     " async syntax check
-    " Plug 'w0rp/ale'
+    Plug 'w0rp/ale'
 " }}}
 " Search & Replace/Movement {{{
-    " Plug 'brooth/far.vim' " util for search and replace in multiple files
     Plug 'tpope/vim-abolish' " better abbreviation and substitution expression
     Plug 'terryma/vim-multiple-cursors'
 
     Plug 'MattesGroeger/vim-bookmarks'
     Plug 'Lokaltog/vim-easymotion'
-
-    " Plug 'mhinz/vim-grepper' " async searcher
 
     " sublime-like fuzzy search in files
     " <leader>ff to search, during search:
@@ -241,21 +242,6 @@ call plug#end()
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
     endif
 " }}}
-" FastFold {{{
-    nmap zuz <Plug>(FastFoldUpdate)
-    let g:fastfold_savehook = 1
-    let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
-    let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
-
-    let g:markdown_folding = 0
-    let g:vimsyn_folding = 'af'
-    let g:xml_syntax_folding = 1
-    let g:javaScript_fold = 1
-    let g:sh_fold_enabled= 7
-    let g:ruby_fold = 1
-
-    set foldlevel=10
-" }}}
 " vim-esearch {{{
     let g:esearch = {
             \ 'adapter':    'rg',
@@ -265,4 +251,24 @@ call plug#end()
             \ 'use':        ['visual', 'hlsearch', 'last', 'word_under_cursor'],
             \}
     let g:esearch#adapter#rg#options = '--follow --iglob "!target/*"'
+" }}}
+" folding {{{
+    " anyfold
+    let g:anyfold_activate=1
+    let g:anyfold_fold_comments=1
+
+    " fastfold
+    " nmap zuz <Plug>(FastFoldUpdate)
+    " let g:fastfold_savehook = 1
+    " let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+    " let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+    "
+    " let g:markdown_folding = 0
+    " let g:vimsyn_folding = 'af'
+    " let g:xml_syntax_folding = 1
+    " let g:javaScript_fold = 1
+    " let g:sh_fold_enabled= 7
+    " let g:ruby_fold = 1
+    "
+    " set foldlevel=10
 " }}}

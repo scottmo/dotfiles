@@ -246,9 +246,6 @@
 " }}}
 
 " Plugins {{{
-    " custom scripts
-    set runtimepath^=~/dotfiles/vim/custom_bundle/
-
     source ~/dotfiles/vim/plugins.vim
 " }}}
 
