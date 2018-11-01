@@ -254,7 +254,7 @@ call plug#end()
 " }}}
 " folding {{{
     " anyfold
-    let g:anyfold_activate=1
+    autocmd Filetype * AnyFoldActivate
     let g:anyfold_fold_comments=1
 
     " fastfold
