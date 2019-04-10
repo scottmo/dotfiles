@@ -14,7 +14,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # ZSH_CUSTOM=$HOME/dotfiles/shell/zsh/custom
 
-plugins=(vi-mode, dotenv)
+plugins=(vi-mode dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
