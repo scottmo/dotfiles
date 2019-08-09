@@ -14,5 +14,7 @@ if hash mkvmerge 2>/dev/null; then
 fi
 
 if hash youtube-dl 2>/dev/null; then
-    alias youtubeMp3='youtube-dl --extract-audio --audio-format mp3 --audio-quality 0'
+    youtubeMp3() {
+        youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "https://www.youtube.com/watch\?v\=$1"
+    }
 fi

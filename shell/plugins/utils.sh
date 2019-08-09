@@ -5,9 +5,20 @@ if [ ! -x "$(which tree 2>/dev/null)" ]; then
     alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi
 
+# top
+alias cpu='top -o cpu'
+alias mem='top -o rsize' # memory
+
 # determine local IP address
 ips () {
     ifconfig | grep "inet " | awk '{ print $2 }'
+}
+
+# get external facing ip
+alias ip="curl icanhazip.com"
+
+portpsat() {
+    sudo lsof -i tcp:$1
 }
 
 # colored man
