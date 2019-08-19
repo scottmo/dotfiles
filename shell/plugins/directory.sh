@@ -10,12 +10,7 @@ alias l='ls -1'
 alias ll='ls -l'
 alias la='ls -la'
 alias lsall='ls -1d $(find .)'
-
-alias rsync='rsync -azv --partial'
-
-dls () {
-    echo `ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/"`
-}
+alias lsdir='echo `ls -l | grep "^d" | awk "{ print $9 }" | tr -d "/"`'
 
 up () {
     DEEP=$1

@@ -20,5 +20,4 @@ source "$HOME/dotfiles/shell/bash/themes/simple_path.theme.bash"
 #
 # source external files
 #
-try_source "$HOME/dotfiles/shell/bash/plugins" "bash"
-try_source "$HOME/dotfiles/shell/bash/completions" "bash"
+eval "$(jump shell)" # gsamokovarov/jump
