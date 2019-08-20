@@ -13,7 +13,7 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 #
 # load base + theme
 #
-export SHELL='zsh'
+export SHELL=`which zsh`
 
 source "$HOME/dotfiles/shell/base.sh"
 # source "$HOME/dotfiles/shell/zsh/themes/momo.zsh-theme"
