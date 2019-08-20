@@ -59,7 +59,15 @@
 	contributors = shortlog -s -n --no-merges
 	patch = add --patch
 	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
+	sync = !f() { git pull upstream "$1" && git push origin "$1" }; f
 [includeIf "gitdir:~/devwork/"]
-    path = ~/dotfiles/_local_/work/gitconfig
-[includeIf "gitdir:~/devpersonal/"]
-    path = ~/dotfiles/_local_/gitconfig
+    path = ~/dotfiles/_local_/work.gitconfig
+[user]
+	name = scottmo
+	email = scottscmo@gmail.com
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/smo/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
