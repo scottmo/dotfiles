@@ -31,9 +31,7 @@ alias gbm='git branch -m'
 alias gbM='git branch -M'
 alias gco='git checkout'
 
-thisb() {
-    git rev-parse --abbrev-ref HEAD
-}
+alias thisb="git rev-parse --abbrev-ref HEAD"
 
 gsetupstream() {
     git branch --set-upstream-to=origin/$1 $1
@@ -41,7 +39,3 @@ gsetupstream() {
 
 # util
 alias gshrink='git gc --prune=now --aggressive'
-
-gitdl () {
-    svn checkout "${1/tree\/master/trunk}"
-}

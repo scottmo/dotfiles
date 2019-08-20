@@ -4,18 +4,20 @@
 # exports, path, helper functions
 #
 export DOTFILES=$HOME/dotfiles
-export PATH="$HOME/bin:$DOTFILES/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export EDITOR=vim
+export PATH="$HOME/bin:$DOTFILES/bin:$PATH"
 
 # 
 # aliases
 # 
-alias meow='cat $DOTFILES/shell/motd'
 alias reload='exec $SHELL'
 
 #
 # source external files
 #
 source $DOTFILES/shell/lib.sh
-try_source "$DOTFILES/shell/plugins" "sh"
-try_source "$HOME/dotfiles/_local_" "sh"
+for file in $DOTFILES/shell/plugins/*.sh; do
+    source "$file"
+done
+for file in $HOME/dotfiles/_local_/*.sh; do
+    source "$file"
+done

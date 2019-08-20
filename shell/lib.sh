@@ -69,11 +69,6 @@
         hash $1 2>/dev/null && return 0
         return 1
     }
-
-    is_os() {
-        [[ "${OSTYPE}" == $1* ]] && return 0
-        return 1
-    }
 # }}}
 
 # Utils {{{

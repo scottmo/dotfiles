@@ -94,7 +94,8 @@ Plug '~/dotfiles/vim/custom_bundle'
     " :%ESubstitute/from/to/gc to replace in search results
     Plug 'eugen0329/vim-esearch'
 
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
 " }}}
 " Web Development {{{

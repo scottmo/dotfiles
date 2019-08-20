@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-if [ -d ~/.fzf ]; then
+if hash fzf 2>/dev/null; then
     if [ "$SHELL" = 'zsh' ]; then
-        try_source ~/.fzf.zsh 
+        . ~/.fzf.zsh 
     elif [ "$SHELL" = 'bash' ]; then
-        try_source ~/.fzf.bash
+        . ~/.fzf.bash
     fi
 
     export FZF_DEFAULT_COMMAND='fd -L --type f --color=never'
