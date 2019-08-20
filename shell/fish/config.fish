@@ -5,8 +5,12 @@ status --is-interactive; and source (jump shell fish | psub)
 
 ##############################
 
-if type -q bax
-    bax source ~/dotfiles/shell/base.sh
+# if type -q bax
+#     bax source ~/dotfiles/shell/base.sh
+# end
+
+for file in ~/dotfiles/_local_/*.fish
+    source $file
 end
 
 . $HOME/.asdf/asdf.fish
