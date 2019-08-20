@@ -81,10 +81,6 @@ setup_git () {
     e_line
 }
 
-setup_zsh () {
-    run_if_allowed "Setup zsh?" "shell/zsh/setup.sh"
-}
-
 setup_mac () {
     run_if_allowed "Setup brew?" "install/brew.sh"
 }
