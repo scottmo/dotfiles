@@ -6,11 +6,6 @@
 export DOTFILES=$HOME/dotfiles
 export PATH="$HOME/bin:$DOTFILES/bin:$PATH"
 
-# 
-# aliases
-# 
-alias reload='exec $SHELL'
-
 #
 # source external files
 #

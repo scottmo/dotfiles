@@ -12,8 +12,6 @@ export HISTSIZE=5000
 #
 # load base + theme
 #
-export SHELL='bash'
-
 source "$HOME/dotfiles/shell/base.sh"
 source "$HOME/dotfiles/shell/bash/themes/simple_path.theme.bash"
 
