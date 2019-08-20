@@ -4,7 +4,6 @@
 # exports, path, helper functions
 #
 export DOTFILES=$HOME/dotfiles
-export PATH="$HOME/bin:$DOTFILES/bin:$PATH"
 
 #
 # source external files
