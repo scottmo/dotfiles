@@ -21,5 +21,3 @@ source "$HOME/dotfiles/shell/base.sh"
 for file in $DOTFILES/shell/zsh/plugins/*.zsh; do
     source "$file"
 done
-
-eval "$(jump shell)" # gsamokovarov/jump
