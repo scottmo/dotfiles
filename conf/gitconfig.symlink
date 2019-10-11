@@ -59,7 +59,7 @@
 	contributors = shortlog -s -n --no-merges
 	patch = add --patch
 	aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
-	sync = !f() { git pull upstream "$1" && git push origin "$1" }; f
+	sync = !git pull upstream "$1" && git push origin "$1" #
 [includeIf "gitdir:~/devwork/"]
     path = ~/dotfiles/_local_/work.gitconfig
 [user]
