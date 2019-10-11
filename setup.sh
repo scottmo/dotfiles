@@ -67,20 +67,6 @@ setup_tmux_pm() {
     e_line
 }
 
-setup_git () {
-    confirm "Set up git user account?"
-    if is_confirmed; then
-        ask ' - What is your github author name?'
-        git config --global user.name $REPLY
-
-        ask ' - What is your github author email?'
-        git config --global user.email $REPLY
-
-        e_success 'Done!'
-    fi
-    e_line
-}
-
 setup_mac () {
     run_if_allowed "Setup brew?" "install/brew.sh"
 }
@@ -90,7 +76,6 @@ install () {
     setup_bashprofile
     setup_zsh
     setup_tmux_pm
-    setup_git
 
     if [ `uname` == "Darwin" ]; then
         setup_mac
