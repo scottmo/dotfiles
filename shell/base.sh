@@ -8,10 +8,15 @@ export DOTFILES=$HOME/dotfiles
 #
 # source external files
 #
-source $DOTFILES/shell/lib.sh
+. $DOTFILES/shell/lib.sh
 for file in $DOTFILES/shell/plugins/*.sh; do
-    source "$file"
+    . $file
 done
-for file in $HOME/dotfiles/_local_/*.sh; do
-    source "$file"
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+
+for file in $DOTFILES/_local_/*.sh; do
+    . $file
 done
+

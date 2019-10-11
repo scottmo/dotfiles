@@ -11,8 +11,3 @@ if hash fzf 2>/dev/null; then
     export FZF_DEFAULT_COMMAND='fd -L --type f --color=never'
     export FZF_ALT_C_COMMAND='fd -L --type d . --color=never'
 fi
-
-# jump
-if hash jump 2>/dev/null; then
-    eval "$(jump shell)" # gsamokovarov/jump
-fi
