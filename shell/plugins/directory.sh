@@ -11,6 +11,6 @@ alias ll='ls -l'
 alias la='ls -la'
 alias lsdir='echo `ls -l | grep "^d" | awk "{ print $9 }" | tr -d "/"`'
 
-cmkdir () {
+function cmkdir {
     mkdir -p "$1";cd "$1";
 }

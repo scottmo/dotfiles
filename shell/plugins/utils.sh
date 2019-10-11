@@ -26,3 +26,7 @@ function man {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+function timeshell {
+    time $1 -i -c echo
+}

@@ -91,14 +91,4 @@
     pathremove() {
         export PATH=$(echo $PATH | sed -e "s;:$1;;;")
     }
-
-    try_source() {
-        if [ ! -z "$2" ]; then
-            for file in $1/*.$2; do
-                [ -f "$file" ] && source $file
-            done
-        elif [ -f "$1" ]; then
-            [ -f "$1" ] && source "$1"
-        fi
-    }
 # }}}
