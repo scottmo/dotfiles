@@ -20,7 +20,6 @@ brew update
 # Install Homebrew packages
 apps=(
     zsh
-    zsh-autosuggestions
     git
     lua
     python
@@ -29,15 +28,10 @@ apps=(
     tree
     rename
     imagemagick
-    macvim --with-lua --with-python3 --with-override-system-vim
+    # macvim --with-lua --with-python3 --with-override-system-vim
 )
 
 brew install "${apps[@]}"
-
-# Avoid upgrading these unless necessary
-brew pin python3
-brew pin python
-brew pin macvim
 
 # Remove outdated versions
 brew cleanup
