@@ -1,14 +1,17 @@
 #!/usr/bin/env sh
 
 if hash fzf 2>/dev/null; then
-    if [ "$SHELL" = 'zsh' ]; then
+    if [ "$SHELL" = `which zsh` ]; then
         . ~/.fzf.zsh 
-    elif [ "$SHELL" = 'bash' ]; then
+    elif [ "$SHELL" = `which bash` ]; then
         . ~/.fzf.bash
     fi
 
-    export FZF_DEFAULT_COMMAND='fd -L --type f --color=never'
-    export FZF_ALT_C_COMMAND='fd -L --type d . --color=never'
+    if hash fd 2>/dev/null; then
+        export FZF_DEFAULT_COMMAND='fd --type f'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        export FZF_ALT_C_COMMAND='fd -L --type d .'
+    fi
 fi
 
 if hash asdf 2>/dev/null; then
