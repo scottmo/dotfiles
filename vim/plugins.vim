@@ -6,7 +6,8 @@ call plug#begin('~/.vim/bundle')
 Plug '~/dotfiles/vim/custom_bundle'
 " GUI {{{
     Plug 'mhinz/vim-startify'
-    Plug 'itchyny/lightline.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     " Plug 'ap/vim-css-color' " # show colors for css values
     Plug 'Yggdroot/indentLine'
     Plug 'airblade/vim-gitgutter'
@@ -95,7 +96,7 @@ Plug '~/dotfiles/vim/custom_bundle'
     Plug 'othree/es.next.syntax.vim'
     Plug 'mattn/emmet-vim'
     Plug 'maksimr/vim-jsbeautify'
-    Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/bundle/tern_for_vim', 'do': 'npm install tern' }
+    " Plug 'ternjs/tern_for_vim', { 'dir': '~/.vim/bundle/tern_for_vim', 'do': 'npm install tern' }
 " }}}
 call plug#end()
 
@@ -105,15 +106,8 @@ call plug#end()
     let g:startify_session_dir='~/.vim/sessions/'
 " }}}
 " lightline {{{
-    let g:lightline = {
-    \   'colorscheme': 'one'
-    \ }
-    let g:lightline.separator = {
-    \   'left': '', 'right': ''
-    \}
-    let g:lightline.subseparator = {
-    \   'left': '', 'right': '' 
-    \}
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1
 " }}}
 " NerdTree {{{
     nmap <leader>n :NERDTreeToggle<CR>
