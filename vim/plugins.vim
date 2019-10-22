@@ -7,15 +7,15 @@ Plug '~/dotfiles/vim/custom_bundle'
 " GUI {{{
     Plug 'mhinz/vim-startify'
     Plug 'itchyny/lightline.vim'
-    Plug 'ap/vim-css-color' " # show colors for css values
+    " Plug 'ap/vim-css-color' " # show colors for css values
     Plug 'Yggdroot/indentLine'
     Plug 'airblade/vim-gitgutter'
     Plug 'sheerun/vim-polyglot' " # syntax highlighting for a lot of filetypes
     " # themes
     Plug 'rakr/vim-one'
-    Plug 'ErichDonGubler/vim-sublime-monokai'
-    Plug 'phanviet/vim-monokai-pro'
     Plug 'NLKNguyen/papercolor-theme'
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'morhetz/gruvbox'
 " }}}
 " Utility {{{
     Plug 'christoomey/vim-system-copy'
@@ -53,25 +53,17 @@ Plug '~/dotfiles/vim/custom_bundle'
 
     Plug 'vim-scripts/marvim'
 
-    let s:useYCM = 0
-    if s:useYCM == 1
-        Plug 'Valloric/YouCompleteMe', {
-            \ 'dir': '~/.vim/bundle/YouCompleteMe',
-            \ 'do': './install.py --js-completer --go-completer'
-            \ }
-        Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-    elseif has('nvim')
-        " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        " let g:deoplete#enable_at_startup = 1
-        " Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets'
-        Plug 'ncm2/ncm2'
-        Plug 'roxma/nvim-yarp'
-        Plug 'ncm2/ncm2-path'
-        Plug 'ncm2/ncm2-bufword'
-        Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
-        Plug 'ncm2/ncm2-html-subscope'
-        Plug 'ncm2/ncm2-ultisnips'
-        Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    let s:useIntellisense = 1
+    if s:useIntellisense == 1
+        Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+        Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+        Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
+        Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " color highlighting
     else
         Plug 'ajh17/VimCompletesMe' " this also works with tern
     endif
@@ -214,29 +206,64 @@ call plug#end()
     autocmd FileType css command! Beautify :call CSSBeautify()<cr>
 " }}}
 " Autocomplete {{{
-    if s:useYCM == 1
-        command! -nargs=1 Rename :YcmCompleter RefactorRename <args>
-        command! GoTo :YcmCompleter GoTo
-        command! Format :YcmCompleter Format
-
-        let g:UltiSnipsExpandTrigger="<c-j>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-    elseif has('nvim')
-        " enable ncm2 for all buffers
-        autocmd BufEnter * call ncm2#enable_for_buffer()
-
-        " note that you must keep `noinsert` in completeopt, you must not use
-        " `longest`. The others are optional. Read `:help completeopt` for
-        " more info
-        set completeopt=noinsert,menuone,noselect
-
+    if s:useIntellisense == 1
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-        let g:UltiSnipsExpandTrigger="<c-j>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+        inoremap <silent><expr> <c-space> coc#refresh()
+
+        " gd - go to definition of word under cursor
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+
+        " gi - go to implementation
+        nmap <silent> gi <Plug>(coc-implementation)
+
+        " gr - find references
+        nmap <silent> gr <Plug>(coc-references)
+
+        " gh - get hint on whatever's under the cursor
+        nnoremap <silent> K :call <SID>show_documentation()<CR>
+        nnoremap <silent> gh :call <SID>show_documentation()<CR>
+
+        function! s:show_documentation()
+            if &filetype == 'vim'
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
+
+
+        " Highlight symbol under cursor on CursorHold
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+
+        nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
+        nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+
+        " List errors
+        nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>
+
+        " list commands available in tsserver (and others)
+        nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+
+        " restart when tsserver gets wonky
+        nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
+
+        " view all errors
+        nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<CR>
+
+        " manage extensions
+        nnoremap <silent> <leader>cx  :<C-u>CocList extensions<cr>
+
+        " rename the current word in the cursor
+        nmap <leader>cr  <Plug>(coc-rename)
+        nmap <leader>cf  <Plug>(coc-format-selected)
+        vmap <leader>cf  <Plug>(coc-format-selected)
+
+        " run code actions
+        vmap <leader>ca  <Plug>(coc-codeaction-selected)
+        nmap <leader>ca  <Plug>(coc-codeaction-selected)
     else
         inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
         inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
