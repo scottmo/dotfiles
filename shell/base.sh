@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-#vim: fdm=marker foldmarker={{{,}}} foldlevel=1
+# vim: fdm=marker foldmarker={{{,}}} foldlevel=1
 
 # Exports {{{
     export DOTFILES=$HOME/dotfiles

@@ -1,4 +1,4 @@
-" vim: fdm=marker foldmarker={{{,}}} foldlevel=1
+" vim: fdm=marker foldmarker={{{,}}} foldlevel=0
 
 " Settings {{{
     " General {{{
@@ -141,7 +141,6 @@
         endif
     " }}}
 " }}}
-
 " Key Mapping {{{
     " New Bindings {{{
         let g:mapleader = ","
@@ -221,7 +220,6 @@
         inoremap <F1> <NOP>
     " }}}
 " }}}
-
 " Utils {{{
     " Toggle background color
     command! BG :let &background = (&background == "dark" ? "light" : "dark")
@@ -236,7 +234,6 @@
     command! Subl exe ':silent !subl %'
     command! Code exe ':silent !code %'
 " }}}
-
 " Autocmd {{{
     augroup filetype_change " {{{
         au!
@@ -244,7 +241,6 @@
         au BufNewFile,BufRead *.html setlocal filetype=htmlm4 " show js syntax on html
     augroup end " }}}
 " }}}
-
 " Custom Plugins {{{
     " focus pane {{{
         function! FocusModeToggle()
@@ -296,7 +292,6 @@
         command! WipeBuffer call DeleteInactiveBufs()
     " }}}
 " }}}
-
 " Plugins {{{
     call plug#begin('~/.vim/bundle')
     Plug '~/dotfiles/vim/custom_bundle'
@@ -591,7 +586,6 @@
         " set foldlevel=10
     " }}}
 " }}}
-
 " Custom config {{{
     syntax enable
 
