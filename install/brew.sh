@@ -25,10 +25,8 @@ apps=(
     python
     python3
     the_silver_searcher
-    tree
     rename
     imagemagick
-    # macvim --with-lua --with-python3 --with-override-system-vim
 )
 
 brew install "${apps[@]}"

@@ -361,7 +361,7 @@
         endif
 
         " async syntax check
-        Plug 'w0rp/ale'
+        " Plug 'w0rp/ale'
     " }}}
     " Search & Replace/Movement {{{
         Plug 'tpope/vim-abolish' " better abbreviation and substitution expression
@@ -586,15 +586,5 @@
         " set foldlevel=10
     " }}}
 " }}}
-" Custom config {{{
-    syntax enable
 
-    set bg=dark
-    color one
-    let g:airline_theme='one'
-
-    " local customizations
-    if filereadable(expand("~/dotfiles/_local_/local.vimrc"))
-        source ~/dotfiles/_local_/local.vimrc
-    endif
-" }}}
+syntax enable

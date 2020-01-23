@@ -7,7 +7,7 @@
 # Plugins {{{
     # CLI Tools {{{
         # nvim {{{
-            if type nvim > /dev/null 2>&1; then
+            if hash nvim 2>/dev/null; then
                 alias vim='nvim'
             fi
         # }}}
@@ -73,7 +73,7 @@
         alias ....='cd ../../..'
 
         export LSCOLORS='Gxfxcxdxdxegedabagacad'
-        alias ls='ls -hF --color=auto'
+        alias ls='ls -hF'
         alias l='ls -1'
         alias ll='ls -l'
         alias la='ls -la'

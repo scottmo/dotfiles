@@ -3,7 +3,6 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
 # exports {{{
     export HISTCONTROL='ignoredups:erasedups:ignorespace'
     export HISTSIZE='5000'

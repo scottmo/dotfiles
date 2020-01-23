@@ -3,8 +3,6 @@
 #
 # load base + theme
 #
-export SHELL=`which zsh`
-
 source "$HOME/dotfiles/shell/base.sh"
 # source "$HOME/dotfiles/shell/zsh/themes/momo.zsh-theme"
 
