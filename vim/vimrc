@@ -305,9 +305,11 @@
         Plug 'sheerun/vim-polyglot' " # syntax highlighting for a lot of filetypes
         " # themes
         Plug 'rakr/vim-one'
-        Plug 'NLKNguyen/papercolor-theme'
-        Plug 'lifepillar/vim-solarized8'
-        Plug 'morhetz/gruvbox'
+        " Plug 'NLKNguyen/papercolor-theme'
+        " Plug 'lifepillar/vim-solarized8'
+        " Plug 'morhetz/gruvbox'
+        " Plug 'bluz71/vim-moonfly-colors'
+        Plug 'bluz71/vim-nightfly-guicolors'
     " }}}
     " Utility {{{
         Plug 'christoomey/vim-system-copy'
@@ -345,8 +347,7 @@
 
         Plug 'vim-scripts/marvim'
 
-        let s:useIntellisense = 1
-        if s:useIntellisense == 1
+        if g:useIntellisense == 1
             Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
             Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
             Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
@@ -378,9 +379,16 @@
         " :%ESubstitute/from/to/gc to replace in search results
         Plug 'eugen0329/vim-esearch'
 
-        " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-        Plug '/usr/local/opt/fzf'
-        Plug 'junegunn/fzf.vim'
+        if g:fuzzyFinder == 1
+            " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+            Plug '/usr/local/opt/fzf'
+            Plug 'junegunn/fzf.vim'
+        elseif g:fuzzyFinder == 2
+            Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+        else
+            Plug 'kien/ctrlp.vim'
+            Plug 'tacahiroy/ctrlp-funky'
+        endif
     " }}}
     " Web Development {{{
         Plug 'othree/yajs.vim'
@@ -436,17 +444,29 @@
         " bi-directional find motion
         nmap s <Plug>(easymotion-s2)
     " }}}
-    " fzf {{{
-        nnoremap <C-p> :FZF<cr>
-        nnoremap <C-f> :BLines<cr>
-        nnoremap <C-b> :Buffers<cr>
+    " fuzzy file {{{
+        if g:fuzzyFinder == 1
+            nnoremap <C-p> :FZF<cr>
+            nnoremap <C-f> :BLines<cr>
+            nnoremap <C-b> :Buffers<cr>
 
-        command! -bang -nargs=* Rg
-            \ call fzf#vim#grep(
-            \   'rg --column --line-number --follow --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-            \   <bang>0 ? fzf#vim#with_preview('up:60%')
-            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-            \   <bang>0)
+            command! -bang -nargs=* Rg
+                \ call fzf#vim#grep(
+                \   'rg --column --line-number --follow --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+                \   <bang>0 ? fzf#vim#with_preview('up:60%')
+                \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+                \   <bang>0)
+        elseif g:fuzzyFinder == 2
+            nnoremap <C-p> :Clap files<cr>
+            nnoremap <C-f> :Clap blines<cr>
+            nnoremap <C-b> :Clap buffers<cr>
+        else
+            let g:ctrlp_use_caching = 0 " no need with fd
+            let g:ctrlp_user_command = 'fd --type f --follow --color=never "" %s'
+
+            let g:ctrlp_funky_syntax_highlight = 1
+            nnoremap <C-r> :CtrlPFunky<CR>
+        endif
     " }}}
     " Multicurosr {{{
         let g:multi_cursor_use_default_mapping=0
@@ -492,7 +512,7 @@
         autocmd FileType css command! Beautify :call CSSBeautify()<cr>
     " }}}
     " Autocomplete {{{
-        if s:useIntellisense == 1
+        if g:useIntellisense == 1
             inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
             inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
