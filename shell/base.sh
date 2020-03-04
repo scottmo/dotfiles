@@ -62,7 +62,7 @@
 
             if hash youtube-dl 2>/dev/null; then
                 function youtubeMp3 {
-                    youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "https://www.youtube.com/watch\?v\=$1"
+                    youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 "$1"
                 }
             fi
         # }}}
