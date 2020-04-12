@@ -35,3 +35,4 @@
 
     PROMPT_COMMAND=__prompt_command
 # }}}
+source "$HOME/dotfiles/shell/base.sh"

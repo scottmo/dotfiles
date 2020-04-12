@@ -2,11 +2,7 @@
 
 CURRENT_BG='NONE'
 
-# Special Powerline characters
-() {
-  local LC_ALL="" LC_CTYPE="en_US.UTF-8"
-  SEGMENT_SEPARATOR='✡'
-}
+SEGMENT_SEPARATOR="$(tput bold)$(tput setaf 4)>$(tput setaf 3)>$(tput setaf 1)>$(tput sgr0)"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -45,11 +41,12 @@ prompt_end() {
 prompt_status() {
   local symbols
   symbols=()
+
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}(╯°□°）╯︵ ┻━┻" # bad result
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
-  [[ -n "$symbols" ]] && echo -n "$symbols\n"
+  echo -n "$symbols\n"
 }
 
 prompt_bar() {
@@ -67,4 +64,4 @@ build_prompt() {
   prompt_end
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt) '
+PROMPT="%{%f%b%k%}$(build_prompt) "
