@@ -3,54 +3,93 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-# exports {{{
-    export HISTCONTROL='ignoredups:erasedups:ignorespace'
-    export HISTSIZE='5000'
+
+# GENERAL OPTIONS {{{
+    # Prevent file overwrite on stdout redirection
+    # Use `>|` to force redirection to an existing file
+    set -o noclobber
+
+    # Update window size after every command
+    shopt -s checkwinsize
+
+    # Enable history expansion with space
+    # E.g. typing !!<space> will replace the !! with your last command
+    bind Space:magic-space
+
+    # Turn on recursive globbing (enables ** to recurse all directories)
+    shopt -s globstar 2> /dev/null
+
+    # Case-insensitive globbing (used in pathname expansion)
+    shopt -s nocaseglob;
 # }}}
-# theme {{{
-    # 0 – Black
-    # 1 – Red
-    # 2 – Green
-    # 3 – Yellow
-    # 4 – Blue
-    # 5 – Magenta
-    # 6 – Cyan
-    # 7 – White
+# SMARTER TAB-COMPLETION (Readline bindings) {{{
+    # Perform file completion in a case insensitive fashion
+    bind "set completion-ignore-case on"
 
-    PROMPT_ARROW="$(tput setaf 4)>$(tput setaf 3)>$(tput setaf 1)>$(tput sgr0) "
+    # Treat hyphens and underscores as equivalent
+    bind "set completion-map-case on"
 
-    function __parse_git_branch {
-        is_git_dirty=`[[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]] && echo "*"`
-        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$is_git_dirty/"
-    }
-    __prompt_status() {
-        local symbols
-        symbols=()
+    # Display matches for ambiguous patterns at first tab press
+    bind "set show-all-if-ambiguous on"
 
-        [[ $RETVAL -ne 0 ]] && symbols+="$(tput setaf 1)(╯°□°）╯︵ ┻━┻" # bad result
-        [[ $UID -eq 0 ]] && symbols+="⚡"
-        [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$(tput setaf 6)⚙"
-
-        echo -n "$symbols"
-    }
-    function __theme_simple {
-        # $ - path >>>
-        local dir=$(basename $(dirname $PWD))/$(basename $PWD)
-        PS1="$(tput bold)$(tput setaf 4)-$(tput setab 6)$(tput setaf 0) $dir $(tput sgr0)$PROMPT_ARROW"
-    }
-    function __theme_momo {
-        # <[ path ]> git_branch dirty
-        # $
-        local dir="$(tput setaf 3)<[$(tput setab 3) $(tput setaf 0)\w $(tput sgr0)$(tput bold)$(tput setaf 3)]>"
-        PS1="$(tput bold)\n$dir $(tput setaf 6)\$(__parse_git_branch)$(tput setaf 4)\n\$ $(tput sgr0)"
-    }
-    function __prompt_command {
-        RETVAL=$?
-        __prompt_status
-        __theme_momo
-        # __theme_simple
-    }
-
-    PROMPT_COMMAND=__prompt_command
+    # Immediately add a trailing slash when autocompleting symlinks to directories
+    bind "set mark-symlinked-directories on"
 # }}}
-source "$HOME/dotfiles/shell/base.sh"
+# SANE HISTORY DEFAULTS {{{
+    # Append to the history file, don't overwrite it
+    shopt -s histappend
+
+    # Save multi-line commands as one command
+    shopt -s cmdhist
+
+    # Record each line as it gets issued
+    PROMPT_COMMAND='history -a'
+
+    # Huge history. Doesn't appear to slow things down, so why not?
+    HISTSIZE=500000
+    HISTFILESIZE=100000
+
+    # Avoid duplicate entries
+    HISTCONTROL="erasedups:ignoreboth"
+
+    # Don't record some commands
+    export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
+    # Use standard ISO 8601 timestamp
+    # %F equivalent to %Y-%m-%d
+    # %T equivalent to %H:%M:%S (24-hours format)
+    HISTTIMEFORMAT='%F %T '
+
+    # Enable incremental history search with up/down arrows (also Readline goodness)
+    # Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+    bind '"\e[A": history-search-backward'
+    bind '"\e[B": history-search-forward'
+    bind '"\e[C": forward-char'
+    bind '"\e[D": backward-char'
+# }}}
+# BETTER DIRECTORY NAVIGATION {{{
+    # Prepend cd to directory names automatically
+    shopt -s autocd 2> /dev/null
+    # Correct spelling errors during tab-completion
+    shopt -s dirspell 2> /dev/null
+    # Correct spelling errors in arguments supplied to cd
+    shopt -s cdspell 2> /dev/null
+
+    # This defines where cd looks for targets
+    # Add the directories you want to have fast access to, separated by colon
+    # Ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
+    CDPATH="."
+
+    # This allows you to bookmark your favorite places across the file system
+    # Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
+    shopt -s cdable_vars
+
+    # Examples:
+    # export dotfiles="$HOME/dotfiles"
+    # export projects="$HOME/projects"
+    # export documents="$HOME/Documents"
+    # export dropbox="$HOME/Dropbox"
+# }}}
+
+. "$HOME/dotfiles/shell/bash/theme.bash"
+. "$HOME/dotfiles/shell/base.sh"
