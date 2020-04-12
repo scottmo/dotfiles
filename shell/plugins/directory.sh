@@ -15,6 +15,7 @@ function cmkdir {
     mkdir -p "$1";cd "$1";
 }
 
-if ! [ type tree > /dev/null 2>&1 ]; then
+
+if ! [ $(command -v tree) ]; then
     alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi

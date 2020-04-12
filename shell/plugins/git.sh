@@ -1,5 +1,8 @@
-
 #!/usr/bin/env sh
+
+! [ $(command -v git) ] && return 0
+
+
 
 alias gcm='git commit --message'
 alias gamend='git commit --amend --reuse-message HEAD'
