@@ -16,6 +16,9 @@
     if [ -d "$HOME/.rbenv/shims" ]; then
         export PATH="$HOME/.rbenv/shims:$PATH"
     fi
+
+    alias gemi="gem install --user-install"
+    alias gemu="gem update --user-install"
 # }}}
 # rust cargo {{{
     if [ -d "$HOME/.cargo/bin" ]; then
