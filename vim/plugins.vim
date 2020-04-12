@@ -128,6 +128,7 @@ call plug#begin('~/.vim/plugged')
             " let g:ctrlp_use_caching = 0 " no need with fd
             " let g:ctrlp_user_command = 'fd --type f --follow --color=never "" %s'
             let g:ctrlp_follow_symlinks = 1
+            let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|bzr|vim|vscode|eclipse|.cache)$'
             nnoremap <C-b> :CtrlPBuffer<CR>
         Plug 'tacahiroy/ctrlp-funky'
             let g:ctrlp_funky_syntax_highlight = 1
