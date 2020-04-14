@@ -7,11 +7,11 @@ function __parse_git_branch {
 function __prompt_status {
     local symbols=()
 
-    [[ $RETVAL -ne 0 ]] && symbols+="\[\e[1;31m\](╯°□°）╯︵ ┻━┻" # bad result
+    [[ $RETVAL -ne 0 ]] && symbols+="\e[1;31m(╯°□°）╯︵ ┻━┻" # bad result
     [[ $UID -eq 0 ]] && symbols+="⚡"
-    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="\[\e[1;36m\]⚙"
+    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="\e[1;36m⚙"
 
-    echo -n "$symbols"
+    ! [ -z "$symbols" ] && echo -e "$symbols"
 }
 function __theme_simple {
     # $ - path >>>
@@ -22,12 +22,8 @@ function __theme_simple {
 function __theme_momo {
     # <[ path ]> git_branch dirty
     # $
-    local dir="\[\e[1;32m\]<[ \w ]>\e[0m"
-    PS1="$dir \[\e[1;36m\]\$(__parse_git_branch)\[\e[1;34m\]\n\$ "
-}
-function __highlight_command {
-    PS1="$PS1\[\e[1;43m\]\[\e[1;30m\]"
-    PS0="\e[0m"
+    local dir="\[\e[1;32m\]<[ \[\e[1;42m\]\[\e[1;30m\]\w\[\e[0m\[\e[1;32m\] ]>\e[0m"
+    PS1="$dir \[\e[1;36m\]\$(__parse_git_branch)\[\e[1;34m\]\n\$ \e[0m"
 }
 function __bold_command {
     PS1="\[\e[1m\]$PS1"
@@ -38,7 +34,6 @@ function __prompt_command {
     __theme_momo
     # __theme_simple
     __bold_command
-    __highlight_command
     echo -ne "\033]0;${PWD##*/}\007" # set title to current folder name
 }
 
