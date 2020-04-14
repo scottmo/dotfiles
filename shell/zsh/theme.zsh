@@ -2,7 +2,7 @@
 
 CURRENT_BG='NONE'
 
-SEGMENT_SEPARATOR="$(tput bold)$(tput setaf 4)>$(tput setaf 3)>$(tput setaf 1)>$(tput sgr0)"
+SEGMENT_SEPARATOR="%B%F{blue}>%F{yellow}>%F{red}>%f"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
