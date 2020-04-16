@@ -20,9 +20,9 @@ function __theme_momo --description '<[ path ]> branch(dirty)\n$'
     set dir (basename (dirname $PWD))/(basename $PWD)
 
     # <[ path ]> git_branch dirty
-    set_color -o $dir_color_bracket; echo -n "<[ "
-    set_color -o $dir_color_path; echo -n $dir
-    set_color -o $dir_color_bracket; echo -n " ]> "
+    set_color -o $dir_color_bracket; echo -n "<["
+    set_color -o $dir_color_path; echo -n " $dir "
+    set_color -o $dir_color_bracket; echo -n "]> "
     echo (git branch --no-color 2>/dev/null)
 
     set_color -o blue; echo -n "\$ "
