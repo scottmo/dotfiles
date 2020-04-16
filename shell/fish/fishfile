@@ -4,3 +4,4 @@ oh-my-fish/plugin-fasd
 oh-my-fish/plugin-extract
 oh-my-fish/plugin-osx
 ~/dotfiles/shell/fish/plugins
+jorgebucaran/fish-bax

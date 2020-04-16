@@ -92,6 +92,10 @@
 # }}}
 
 . "$HOME/dotfiles/shell/bash/theme.bash"
+
+function setenv() { export "$1=$2"; }
+function setalias() { alias "$1=$2"; }
+
 . "$HOME/dotfiles/shell/env.sh"
 
 # plugins
