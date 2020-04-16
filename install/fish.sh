@@ -8,16 +8,8 @@ fi
 
 fihser_path="$HOME/.config/fish/functions/fisher.fish"
 if ! [ -f $fihser_path ]; then
-    curl https://git.io/fisher --create-dirs -sLo $fihser_path
-
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    ln -sf ~/dotfiles/shell/fish/fishfile ~/.config/fish/fishfile
     fish -c fisher
-
-    exec fish # reload with fisher
-
-    fisher add jorgebucaran/fish-bax # exec posix script
-    fisher add oh-my-fish/plugin-brew
-    fisher add oh-my-fish/plugin-bang-bang
-    fisher add oh-my-fish/plugin-fasd
-    fisher add oh-my-fish/plugin-extract
-    fisher add oh-my-fish/plugin-osx
 fi
