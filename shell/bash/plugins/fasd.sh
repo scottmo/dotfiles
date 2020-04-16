@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source "$HOME/dotfiles/shell/plugins/fasd"
+! [ $(command -v fasd) ] && return 0
 
 # function to execute built-in cd
 fasd_cd() {

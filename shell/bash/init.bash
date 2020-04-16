@@ -92,4 +92,10 @@
 # }}}
 
 . "$HOME/dotfiles/shell/bash/theme.bash"
-. "$HOME/dotfiles/shell/base.sh"
+. "$HOME/dotfiles/shell/env.sh"
+
+# plugins
+for file in $HOME/dotfiles/shell/bash/plugins/*.sh; do
+    . $file
+done
+unset file

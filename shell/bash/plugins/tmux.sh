@@ -2,8 +2,6 @@
 
 ! [ $(command -v tmux) ] && return 0
 
-
-
 alias tma='tmux attach -t'
 alias tmd='tmux detach-client'
 alias tms='tmux switch -t'
