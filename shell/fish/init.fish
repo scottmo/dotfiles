@@ -37,10 +37,6 @@ bax . $HOME/dotfiles/shell/env.sh
 
 ##############################
 
-for file in ~/dotfiles/_local_/fish/*.fish
-    . $file
-end
-
 for file in $HOME/dotfiles/shell/fish/plugins/*.fish
     . $file
 end
