@@ -12,4 +12,7 @@ function setalias
     abbr -ag $argv
 end
 
-. $HOME/dotfiles/shell/env.sh
+source $HOME/dotfiles/shell/env.sh
+for file in ~/dotfiles/shell/fish/utils/*.fish
+    source $file
+end

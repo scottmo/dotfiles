@@ -1,6 +1,4 @@
-#!/usr/bin/env fish
-
-if test (command -v tmux)
+if [ -n (command -v tmux) ]
     abbr -ag tma 'tmux attach -t'
     abbr -ag tmd 'tmux detach-client'
     abbr -ag tms 'tmux switch -t'

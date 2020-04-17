@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 abbr -ag gcm 'git commit --message'
 abbr -ag gamend 'git commit --amend --reuse-message HEAD'
 abbr -ag gcpn 'git cherry-pick --no-commit'

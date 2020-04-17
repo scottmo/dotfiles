@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 function __prompt_status
     set -l retval $status
     set -l symbols ""

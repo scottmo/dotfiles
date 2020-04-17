@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 #   memHogsTop, memHogsPs:  Find memory hogs
 #   -----------------------------------------------------
 alias memHogsTop='top -l 1 -o rsize | head -20'

@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 # numFiles: Count of non-hidden files in current dir
 alias numFiles='echo (ls -1 | wc -l)'
 
