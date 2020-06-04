@@ -40,6 +40,7 @@ call plug#begin('~/.vim/plugged')
 
     " themes
     Plug 'rakr/vim-one'
+    Plug 'drewtempelmeyer/palenight.vim'
 " }}}
 " File Explorer {{{
     Plug 'tpope/vim-vinegar' " make vim's netwr file browser easy to use
