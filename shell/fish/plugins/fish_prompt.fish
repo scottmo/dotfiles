@@ -14,7 +14,7 @@ end
 # end
 function __theme_momo --description '<[ path ]> branch(dirty)\n$'
     set dir_color_bracket green -b normal
-    set dir_color_path black -b green
+    set dir_color_path white -b green
     set dir (basename (dirname $PWD))/(basename $PWD)
 
     # <[ path ]> git_branch dirty
