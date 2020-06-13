@@ -12,6 +12,8 @@ source $SHELL_FILES/zsh/powerlevel10k.zsh
 # init completions
 autoload -Uz compinit
 compinit
+autoload bashcompinit
+bashcompinit
 
 #
 # plugins
