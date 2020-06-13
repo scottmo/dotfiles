@@ -91,15 +91,12 @@
     # export dropbox="$HOME/Dropbox"
 # }}}
 
-. "$HOME/dotfiles/shell/bash/theme.bash"
+source "$HOME/dotfiles/shell/bash/theme.bash"
 
-function setenv() { export "$1=$2"; }
-function setalias() { alias "$1=$2"; }
-
-. "$HOME/dotfiles/shell/env.sh"
+source "$HOME/dotfiles/shell/base.sh"
 
 # plugins
-for file in $HOME/dotfiles/shell/bash/plugins/*.sh; do
-    . $file
+for file in $HOME/dotfiles/shell/plugins/*.sh; do
+    source $file
 done
 unset file
