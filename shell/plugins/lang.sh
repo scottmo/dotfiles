@@ -5,7 +5,12 @@
 #
 if [ -d "$HOME/.asdf/" ]; then
     source ~/.asdf/asdf.sh
-    source ~/.asdf/completions/asdf.bash
+    
+    if [ "$ZSH_NAME" = 'zsh' ]; then
+        source ~/.asdf/completions/asdf.zsh
+    elif [ "$BASH" = 'bash' ]; then
+        source ~/.asdf/completions/asdf.bash
+    fi
 fi
 
 #
