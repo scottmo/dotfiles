@@ -13,3 +13,15 @@ if ! [ $(command -v brew) ]; then
 fi
 # Make sure we’re using the latest Homebrew
 brew update
+
+brew install fd
+brew install ripgrep
+
+brew install lsd
+
+brew install fzf
+$(brew --prefix)/opt/fzf/install
+
+brew install fasd
+
+brew install rename
