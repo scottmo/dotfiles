@@ -2,6 +2,8 @@
 
 ! [ $(command -v fasd) ] && return 0
 
+eval "$(fasd --init auto)"
+
 # function to execute built-in cd
 fasd_cd() {
     if [ $# -le 1 ]; then
