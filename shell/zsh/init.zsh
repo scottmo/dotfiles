@@ -13,7 +13,7 @@ SHELL_FILES="$HOME/dotfiles/shell"
 # theme
 #
 # needs to load this near the top for instant prompt
-source $SHELL_FILES/zsh/powerlevel10k.zsh
+source $SHELL_FILES/zsh/p10k.zsh
 # source $SHELL_FILES/zsh/theme.zsh
 
 # init completions
