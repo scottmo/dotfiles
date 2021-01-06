@@ -1,9 +1,5 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "smo"
@@ -24,17 +20,16 @@
 (setq
      doom-font (font-spec :family "Monaco Nerd Font Mono" :size 12)
      doom-theme 'doom-one
+     display-line-numbers-type t
 )
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+;; org mode
 (setq org-directory "~/org/")
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
+;; projectile
 (load! "+projectile")
+(setq projectile-switch-project-action #'projectile-commander)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
