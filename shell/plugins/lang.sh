@@ -8,6 +8,13 @@ if [ -d "$HOME/.asdf/" ]; then
 fi
 
 #
+# fnm
+#
+if [ -d "$HOME/.fnm" ]; then
+    eval "$(fnm env)"
+fi
+
+#
 # rust
 #
 [ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
