@@ -40,8 +40,6 @@ target/
 *~.nib
 .DS_Store
 *.plist
-*%*
-*@*
 
 Applications/
 node_modules/
