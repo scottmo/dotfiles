@@ -18,10 +18,25 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq
-     doom-font (font-spec :family "Monaco Nerd Font Mono" :size 12)
+     doom-font (font-spec :family "Monaco Nerd Font Mono" :size 11)
+     ;; doom-font (font-spec :family "Dank Mono" :size 12)
      doom-theme 'doom-one
      display-line-numbers-type t
+     global-visual-line-mode t
 )
+
+;; autocomplete config
+(company-tng-configure-default) ;; autocomplete with tab
+(setq company-selection-wrap-around t)
+
+;; custom file type assocation
+(setq auto-mode-alist
+      (append '(("\\.cmp\\'" . mhtml-mode)
+                ("\\.app\\'" . mhtml-mode)
+                ("\\.lib\\'" . mhtml-mode)
+                ("\\.evt\\'" . mhtml-mode)
+                ("\\.txt\\'" . markdown-mode))
+              auto-mode-alist))
 
 ;; org mode
 (setq org-directory "~/org/")
