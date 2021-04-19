@@ -38,6 +38,13 @@
                 ("\\.txt\\'" . markdown-mode))
               auto-mode-alist))
 
+;; markdown
+(custom-set-faces
+    '(markdown-header-face ((t (:inherit font-lock-function-name-face :weight bold :family "variable-pitch"))))
+    '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 2.2))))
+    '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.8))))
+    '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.4)))))
+
 ;; org mode
 (setq org-directory "~/org/")
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
