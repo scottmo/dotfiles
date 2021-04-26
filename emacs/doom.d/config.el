@@ -37,7 +37,11 @@
                 ("\\.app\\'" . mhtml-mode)
                 ("\\.lib\\'" . mhtml-mode)
                 ("\\.evt\\'" . mhtml-mode)
-                ("\\.txt\\'" . markdown-mode))
+                ("\\.txt\\'" . markdown-mode)
+                ("\\.jsx\\'" . web-mode)
+                ("\\.tsx\\'" . web-mode)
+                ("\\.vue\\'" . web-mode)
+                )
               auto-mode-alist))
 
 ;; markdown
