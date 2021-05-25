@@ -22,6 +22,6 @@ function cmkdir {
 }
 
 
-if ! [ $(command -v tree) ]; then
+if ! type tree &> /dev/null; then
     alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 fi
