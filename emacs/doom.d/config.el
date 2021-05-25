@@ -26,10 +26,7 @@
 )
 
 ;; autocomplete config
-(company-tng-configure-default) ;; autocomplete with tab
-(setq company-minimum-prefix-length 1)
 (setq company-selection-wrap-around t)
-(setq company-idle-delay 0)
 
 ;; custom file type assocation
 (setq auto-mode-alist
