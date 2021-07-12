@@ -2,9 +2,11 @@
 
 source ~/dotfiles/vim/base.vim
 
+" autocomplete: simple, lsp
+" finder: fzf, ctrlp, clap
 let g:myplugins = {
-    \'autocomplete': 'simple', " simple, lsp
-    \'finder': 'fzf', " ctrlp, fzf, clap
+    \'autocomplete': 'simple',
+    \'finder': 'fzf', " ctrlp,
     \'web': 1,
     \'lint': 1,
     \'inlinecoderunner': 1,
