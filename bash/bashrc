@@ -112,7 +112,6 @@
     function __prompt_command {
         RETVAL=$?
         __prompt_status
-        __theme_momo
         __theme_simple
         __bold_command
         echo -ne "\033]0;${PWD##*/}\007" # set title to current folder name
