@@ -27,5 +27,5 @@ endif
 syntax enable
 
 if !empty(glob("~/dotfiles/_local_/local.vimrc"))
-    source "~/dotfiles/_local_/local.vimrc"
+    source ~/dotfiles/_local_/local.vimrc
 endif
