@@ -6,6 +6,6 @@ if [ -d "/Applications/MacVim.app/Contents/bin" ]; then
 fi
 
 # sublime
-if [ -d "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin" ]; then
-    export PATH="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin:$PATH"
+if [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ]; then
+    export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 fi
