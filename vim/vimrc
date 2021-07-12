@@ -6,7 +6,7 @@ source ~/dotfiles/vim/base.vim
 " finder: fzf, ctrlp, clap
 let g:myplugins = {
     \'autocomplete': 'simple',
-    \'finder': 'fzf', " ctrlp,
+    \'finder': 'fzf',
     \'web': 1,
     \'lint': 1,
     \'inlinecoderunner': 1,
