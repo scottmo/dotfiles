@@ -12,4 +12,14 @@ let g:myplugins = {
     \}
 source ~/dotfiles/vim/plugins.vim
 
+if has("gui_running")
+    set lines=40 columns=90
+
+    set guioptions-=m " remove menu bar
+    set guioptions-=T " remove toolbar
+    set guioptions-=r " remove right scrollbar
+    set guioptions-=L " remove left  scrollbar
+    set guioptions+=e " use native tab display
+endif
+
 syntax enable

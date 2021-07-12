@@ -90,13 +90,32 @@
     # export documents="$HOME/Documents"
     # export dropbox="$HOME/Dropbox"
 # }}}
+# Simple Theme {{{
+    function __prompt_status {
+        local symbols=()
 
-source "$HOME/dotfiles/shell/bash/theme.bash"
+        [[ $RETVAL -ne 0 ]] && symbols+="\e[1;31m(╯°□°）╯︵ ┻━┻" # bad result
+        [[ $UID -eq 0 ]] && symbols+="⚡"
+        [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="\e[1;36m⚙"
 
-source "$HOME/dotfiles/shell/base.sh"
-
-# plugins
-for file in $HOME/dotfiles/shell/plugins/*.sh; do
-    source $file
-done
-unset file
+        ! [ -z "$symbols" ] && echo -e "$symbols"
+    }
+    function __theme_simple {
+        # $ - path >>>
+        local arrow="\[\e[1;34m\]>\[\e[1;33m\]>\[\e[1;31m\]>\e[0m "
+        local dir=$(basename $(dirname $PWD))/$(basename $PWD)
+        PS1="\[\e[1;34m\]- $dir $arrow"
+    }
+    function __bold_command {
+        PS1="\[\e[1m\]$PS1"
+    }
+    function __prompt_command {
+        RETVAL=$?
+        __prompt_status
+        __theme_momo
+        __theme_simple
+        __bold_command
+        echo -ne "\033]0;${PWD##*/}\007" # set title to current folder name
+    }
+    PROMPT_COMMAND=__prompt_command
+# }}}

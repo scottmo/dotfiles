@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc: bash/bashrc
+    ~/.zshrc: zsh/zshrc
+    ~/.p10k.zsh: zsh/p10k_preset.zsh
+    ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.vimrc: vim/vimrc
+    ~/.config/nvim/init.vim: vim/vimrc
+    ~/.doom.d: emacs/doom.d
+    ~/.gitconfig:
+    ~/.tmux.conf: tmux/tmux.conf
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

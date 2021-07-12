@@ -1,20 +1,20 @@
 #!/usr/bin/env zsh
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# make $PATH a unique array / dedupe
+# path and PATH are linked
+typeset -aU path
 
-SHELL_FILES="$HOME/dotfiles/shell"
+export dotfiles="$HOME/dotfiles"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+SHELL_FILES="$HOME/dotfiles/zsh"
 
 #
 # theme
 #
 # needs to load this near the top for instant prompt
-source $SHELL_FILES/zsh/p10k.zsh
-# source $SHELL_FILES/zsh/theme.zsh
+source $SHELL_FILES/p10k.zsh
+# source $SHELL_FILES/theme.zsh
 
 # init completions
 autoload -Uz compinit
@@ -27,8 +27,8 @@ bashcompinit
 #
 
 # plugin manager
-source $SHELL_FILES/zsh/zinit.zsh
-# source $SHELL_FILES/zsh/zim.zsh
+source $SHELL_FILES/zinit.zsh
+# source $SHELL_FILES/zim.zsh
 
 # plugins settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
@@ -52,7 +52,10 @@ SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-source $SHELL_FILES/base.sh
+alias list_ran_command="zsh -lixc ''"
+
 for file in $SHELL_FILES/plugins/*.sh; do
     source $file
 done
+
+FILE="$HOME/dotfiles/_local_/local.sh" && test -f $FILE && source $FILE
