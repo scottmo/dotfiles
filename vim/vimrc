@@ -3,8 +3,8 @@
 source ~/dotfiles/vim/base.vim
 
 let g:myplugins = {
-    \'autocomplete': 'simple/lsp', " pick one
-    \'finder': 'ctrlp/fzf/clap', " pick one
+    \'autocomplete': 'simple', " simple, lsp
+    \'finder': 'fzf', " ctrlp, fzf, clap
     \'web': 1,
     \'lint': 1,
     \'inlinecoderunner': 1,
@@ -23,3 +23,7 @@ if has("gui_running")
 endif
 
 syntax enable
+
+if !empty(glob("~/dotfiles/_local_/local.vimrc"))
+    source "~/dotfiles/_local_/local.vimrc"
+endif
