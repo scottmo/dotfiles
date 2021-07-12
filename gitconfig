@@ -60,8 +60,15 @@
     patch = add --patch
     aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
     sync = !git pull upstream "$1" && git push origin "$1" #
-[includeIf "gitdir:~/devwork/"]
+[includeIf "gitdir:~/code/"]
     path = ~/dotfiles/_local_/work.gitconfig
 [user]
     name = scottmo
     email = scottscmo@gmail.com
+[gpg]
+    program = /usr/local/bin/gpg
+[pull]
+    rebase = false
+[push]
+	default = simple
+	gpgsign = if-asked
