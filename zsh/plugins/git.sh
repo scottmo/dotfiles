@@ -17,14 +17,6 @@ alias ggls='git ls-files'
 
 alias gms='git merge --squash'
 
-gsync () {
-    branch="$1"
-    if [ -z "$branch" ]; then
-        branch="$(thisb)"
-    fi
-    git pull upstream "$branch" && git push origin "$branch"
-}
-
 # branch
 alias gb='git branch | cat'
 alias gbc='git checkout -b'
@@ -35,10 +27,6 @@ alias gbM='git branch -M'
 alias gco='git checkout'
 
 alias thisb="git rev-parse --abbrev-ref HEAD"
-
-gsetupstream() {
-    git branch --set-upstream-to=origin/$1 $1
-}
 
 # util
 alias gshrink='git gc --prune=now --aggressive'
