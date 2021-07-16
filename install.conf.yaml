@@ -9,7 +9,7 @@
     ~/.bashrc: bash/bashrc
     ~/.zshrc: zsh/zshrc
     ~/.p10k.zsh: zsh/p10k_preset.zsh
-    ~/.config/fish/fish_plugins: fish/fish_plugins
+    ~/.config/fish/config.fish: fish/config.fish
     ~/.vimrc: vim/vimrc
     ~/.config/nvim/init.vim: vim/vimrc
     ~/.doom.d: emacs/doom.d
