@@ -1,7 +1,10 @@
 # vim: fdm=marker foldmarker={{{,}}} foldlevel=0
 
 # plugins {{{
-    if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
+    if not functions -q fundle
+        eval (curl -sfL https://git.io/fundle-install)
+        echo "Please restart fish after installation."
+    end
 
     fundle plugin 'jorgebucaran/replay.fish'
     fundle plugin 'oh-my-fish/plugin-brew'
@@ -113,9 +116,11 @@
 # }}}
 # source external files {{{
     # plugins from other shell
-    replay source ~/dotfiles/zsh/plugins/git.sh
-    replay source ~/dotfiles/zsh/plugins/editor.sh
-    replay source ~/dotfiles/zsh/plugins/tmux.sh
+    if functions -q replay
+        replay source ~/dotfiles/zsh/plugins/git.sh
+        replay source ~/dotfiles/zsh/plugins/editor.sh
+        replay source ~/dotfiles/zsh/plugins/tmux.sh
+    end
 
     # local
     test -f ~/dotfiles/_local_/fish/local.fish && source ~/dotfiles/_local_/fish/local.fish
