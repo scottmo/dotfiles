@@ -123,5 +123,5 @@
     end
 
     # local
-    test -f ~/dotfiles/_local_/fish/local.fish && source ~/dotfiles/_local_/fish/local.fish
+    test -f ~/dotfiles/_local_/local.fish && source ~/dotfiles/_local_/local.fish
 # }}}
