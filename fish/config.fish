@@ -12,7 +12,6 @@
     fundle plugin 'oh-my-fish/plugin-fasd'
     fundle plugin 'oh-my-fish/plugin-extract'
     fundle plugin 'oh-my-fish/plugin-osx'
-    fundle plugin 'joseluisq/gitnow'
     fundle plugin 'jorgebucaran/gitio.fish'
     fundle plugin 'oh-my-fish/theme-bobthefish'
     fundle init
