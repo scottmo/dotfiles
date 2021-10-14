@@ -18,9 +18,9 @@
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq
-     doom-font (font-spec :family "agave Nerd Font Mono" :size 14)
+     doom-font (font-spec :family "CodeNewRoman Nerd Font Mono" :size 13)
      ;; doom-font (font-spec :family "Dank Mono" :size 12)
-     doom-theme 'doom-one
+     doom-theme 'doom-solarized-dark
      display-line-numbers-type t
      global-visual-line-mode t
 )
