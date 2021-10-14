@@ -24,3 +24,7 @@
         ".min.js"
         )
 )
+
+(setq projectile-project-search-path
+      '("~/code" "~/code_momo")
+)
