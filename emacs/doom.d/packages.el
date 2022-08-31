@@ -51,3 +51,4 @@
 
 (package! p4
   :recipe (:host github :repo "gareth-rees/p4.el"))
+(package! exec-path-from-shell)

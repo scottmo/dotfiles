@@ -19,8 +19,6 @@
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 (setq
      doom-font (font-spec :family "CodeNewRoman Nerd Font Mono" :size 13)
-     ;; doom-font (font-spec :family "Dank Mono" :size 12)
-     doom-theme 'doom-solarized-dark
      display-line-numbers-type t
      global-visual-line-mode t
 )
@@ -74,3 +72,7 @@
 ;; they are implemented.
 
 (require 'p4)
+
+;; set the correct PATH for Mac GUI App
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
