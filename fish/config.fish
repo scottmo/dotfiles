@@ -25,13 +25,6 @@
     end    
 # }}}
 # source external files {{{
-    # plugins from other shell
-    if functions -q replay
-        replay source ~/dotfiles/zsh/plugins/git.sh
-        replay source ~/dotfiles/zsh/plugins/editor.sh
-        replay source ~/dotfiles/zsh/plugins/tmux.sh
-    end
-
     # local
     test -f ~/dotfiles/_local_/local.fish && source ~/dotfiles/_local_/local.fish
 # }}}
