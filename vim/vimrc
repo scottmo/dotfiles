@@ -1,17 +1,6 @@
 " vim: fdm=marker foldmarker={{{,}}} foldlevel=0
 
 source ~/dotfiles/vim/base.vim
-
-" autocomplete: simple, lsp
-" finder: fzf, ctrlp, clap
-let g:myplugins = {
-    \'autocomplete': 'simple',
-    \'finder': 'fzf',
-    \'web': 1,
-    \'lint': 1,
-    \'inlinecoderunner': 1,
-    \'indentline': 1,
-    \}
 source ~/dotfiles/vim/plugins.vim
 
 if has("gui_running")
