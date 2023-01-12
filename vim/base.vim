@@ -99,11 +99,6 @@
         if v:version >= 704
             set breakindent   " keep indent for wrapped lines
         endif
-
-        " set t_Co=256 " use 256 colors
-        if has("termguicolors")
-            set termguicolors
-        endif
     " }}}
     " paste automatically with paste mode on {{{
         if exists('$TMUX')
