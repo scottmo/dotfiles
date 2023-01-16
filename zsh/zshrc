@@ -9,12 +9,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 SHELL_FILES="$HOME/dotfiles/zsh"
 
-#
-# theme
-#
-# needs to load this near the top for instant prompt
-source $SHELL_FILES/p10k.zsh
-# source $SHELL_FILES/theme.zsh
+# prompt
+[ $(command -v starship) ] && eval "$(starship init zsh)"
 
 # init completions
 autoload -Uz compinit
@@ -26,9 +22,17 @@ bashcompinit
 # plugins
 #
 
-# plugin manager
-source $SHELL_FILES/zinit.zsh
-# source $SHELL_FILES/zim.zsh
+# plugins
+[[ -f ~/.zsh-snap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
+
+source ~/.zsh-snap/znap.zsh  # Start Znap
+
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+znap source Aloxaf/fzf-tab
 
 # plugins settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'

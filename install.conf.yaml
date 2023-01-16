@@ -8,10 +8,8 @@
 - link:
     ~/.bashrc: bash/bashrc
     ~/.zshrc: zsh/zshrc
-    ~/.p10k.zsh: zsh/p10k_preset.zsh
     ~/.config/fish/config.fish: fish/config.fish
     ~/.vimrc: vim/vimrc
-    ~/.config/nvim/init.vim: vim/vimrc
     ~/.doom.d: emacs/doom.d
     ~/.gitconfig:
     ~/.tmux.conf: tmux/tmux.conf
