@@ -33,6 +33,7 @@ znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source Aloxaf/fzf-tab
+znap source trystan2k/zsh-tab-title
 
 # plugins settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
