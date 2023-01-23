@@ -2,8 +2,11 @@
 
 ! [ $(command -v fzf) ] && return 0
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
+if [ "$ZSH_NAME" = 'zsh' ]; then
+    [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+elif [ "$BASH" = 'bash' ]; then
+    [[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
+fi
 
 if [ $(command -v fd) ]; then
     export FZF_DEFAULT_COMMAND='fd -L --type f'
