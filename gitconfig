@@ -59,7 +59,8 @@
     contributors = shortlog -s -n --no-merges
     patch = add --patch
     aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
-    sync = !git pull upstream "$1" && git push origin "$1" #
+    sync = !git pull upstream "$1" && git push origin "$1"
+    checkout-pr = !git fetch upstream pull/$1/head:$2 && git checkout $2
 [includeIf "gitdir:~/code/"]
     path = ~/dotfiles/_local_/work.gitconfig
 [user]
@@ -72,3 +73,5 @@
 [push]
 	default = simple
 	gpgsign = if-asked
+[init]
+	defaultBranch = main
