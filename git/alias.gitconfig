@@ -1,18 +1,4 @@
 # global gitconfig
-[core]
-    pager = less -r
-    excludesfile = $HOME/.gitignore_global
-[color]
-    ui = auto # covers diff = true, status = auto, branch = auto
-    interactive = auto
-[push]
-    default = simple
-[diff]
-    compactionHeuristic = true
-    indentHeuristic = true
-    algorithm = patience
-[credential]
-    helper = cache --timeout=86400
 [alias]
     # revert
     unstage-file = reset -q HEAD --
@@ -61,17 +47,3 @@
     aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\:\\ /
     sync = !git pull upstream "$1" && git push origin "$1"
     checkout-pr = !git fetch upstream pull/$1/head:$2 && git checkout $2
-[user]
-    name = scottmo
-    email = scottscmo@gmail.com
-[gpg]
-    program = /usr/local/bin/gpg
-[pull]
-    rebase = false
-[push]
-	default = simple
-	gpgsign = if-asked
-[init]
-	defaultBranch = main
-[includeIf "gitdir:~/code/"]
-    path = ~/dotfiles/_local_/work.gitconfig

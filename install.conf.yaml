@@ -11,7 +11,7 @@
     ~/.config/fish/config.fish: fish/config.fish
     ~/.vimrc: vim/vimrc
     ~/.doom.d: emacs/doom.d
-    ~/.gitconfig:
+    ~/.gitconfig: git/gitconfig
     ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
