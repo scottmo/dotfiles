@@ -9,9 +9,6 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 SHELL_FILES="$HOME/dotfiles/zsh"
 
-# prompt
-[ $(command -v starship) ] && eval "$(starship init zsh)"
-
 # init completions
 autoload -Uz compinit
 compinit
@@ -23,17 +20,21 @@ bashcompinit
 #
 
 # plugins
-[[ -f ~/.zsh-snap/znap.zsh ]] ||
+ZSH_PLUGS=~/.zsh-plugs
+[[ -f $ZSH_PLUGS/znap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
+        https://github.com/marlonrichert/zsh-snap.git $ZSH_PLUGS/znap
 
-source ~/.zsh-snap/znap.zsh  # Start Znap
+source $ZSH_PLUGS/znap/znap.zsh  # Start Znap
 
-znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source Aloxaf/fzf-tab
 znap source trystan2k/zsh-tab-title
+znap source romkatv/powerlevel10k
+
+# prompt
+source $SHELL_FILES/p10k.zsh
 
 # plugins settings
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
@@ -47,6 +48,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 setopt autopushd # automatically pushd when cd
+setopt share_history # share history across sessions
 
 # Input/output
 
