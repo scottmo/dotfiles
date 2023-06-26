@@ -11,6 +11,7 @@
     # diff
     diff-staged = diff --cached
     diff-remote = ! git diff "$(git branch-this)" "origin/$(git branch-this)"
+    diff-parent = diff HEAD^ HEAD
     # branch
     track = branch --set-upstream-to
     untrack = rm -r --cached
