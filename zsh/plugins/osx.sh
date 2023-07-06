@@ -10,3 +10,6 @@ function cdf {
         echo 'No Finder window found' >&2
     fi
 }
+
+alias displaysleep="pmset displaysleepnow"
+alias thermlog="pmset -g thermlog"
