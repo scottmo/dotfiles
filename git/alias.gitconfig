@@ -17,6 +17,7 @@
     untrack = rm -r --cached
 
     branch-new = checkout -b
+    branch-remote = ! git fetch $1 $2 && git switch -c $2 $1/$2
     branch-rename = branch -m
     branch-delete = branch -D
 
