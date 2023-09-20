@@ -11,5 +11,9 @@ function cdf {
     fi
 }
 
+function sms {
+    osascript -e 'tell application "Messages" to send "'$2'" to participant "'$1'" of (1st account whose service type = SMS)'
+}
+
 alias displaysleep="pmset displaysleepnow"
 alias thermlog="pmset -g thermlog"
