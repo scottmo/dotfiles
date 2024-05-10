@@ -12,6 +12,7 @@ alias greverttobase="git reset HEAD^"
 alias grevertlastcommit="git revert HEAD~"
 
 alias gst="git status"
+alias gss="git status -s"
 
 alias ggls="git ls-files"
 
