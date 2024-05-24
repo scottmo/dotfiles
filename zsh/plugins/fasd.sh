@@ -16,3 +16,4 @@ fasd_cd() {
 }
 
 alias z='fasd_cd -d'
+unalias sf
