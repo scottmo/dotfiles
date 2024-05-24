@@ -29,5 +29,8 @@ alias gco="git checkout"
 
 alias thisb="git rev-parse --abbrev-ref HEAD"
 
+alias gps="git push"
+alias gp="git pull"
+
 # util
 alias gshrink="git gc --prune=now --aggressive"
