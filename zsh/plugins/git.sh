@@ -33,4 +33,10 @@ alias gps="git push"
 alias gp="git pull"
 
 # util
-alias gshrink="git gc --prune=now --aggressive"
+alias gshrink="git repack -a -d -f --depth=250 --window=250"
+
+# commit template
+gfeat() { git commit -m "feat: $1" }
+gfix() { git commit -m "fix: $1" }
+gwip() { git commit -m "wip: $1" }
+gchore() { git commit -m "chore: $1" }
