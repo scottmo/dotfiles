@@ -58,7 +58,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'kien/ctrlp.vim'
         let g:ctrlp_follow_symlinks = 1
         let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|bzr|vim|vscode|eclipse|.cache)$'
-        nnoremap <C-b> :CtrlPBuffer<CR>
+        let g:ctrlp_custom_root_markers=['.project']
+        nnoremap <leader>fb :CtrlPBuffer<CR>
+        nnoremap <leader>ff :CtrlPCurWD<CR>
 " }}}
 " Autocomplete {{{
     Plug 'jiangmiao/auto-pairs' " auto insert (){}[]``````
