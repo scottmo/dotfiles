@@ -40,3 +40,5 @@ gfeat() { git commit -m "feat: $1" }
 gfix() { git commit -m "fix: $1" }
 gwip() { git commit -m "wip: $1" }
 gchore() { git commit -m "chore: $1" }
+gtest() { git commit -m "test: $1" }
+
