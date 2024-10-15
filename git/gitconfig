@@ -1,4 +1,9 @@
 [include]
-    path = ~/dotfiles/git/alias.gitconfig
-[include]
     path = ~/dotfiles/_local_/gitconfig
+[maintenance]
+	repo = /Users/smo/.zsh-plugs/znap
+	repo = /Users/smo/.zsh-plugs/Aloxaf/fzf-tab
+	repo = /Users/smo/.zsh-plugs/romkatv/powerlevel10k
+	repo = /Users/smo/.zsh-plugs/trystan2k/zsh-tab-title
+	repo = /Users/smo/.zsh-plugs/zsh-users/zsh-autosuggestions
+	repo = /Users/smo/.zsh-plugs/zsh-users/zsh-syntax-highlighting
