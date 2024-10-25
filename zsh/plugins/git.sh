@@ -29,8 +29,10 @@ alias gms="git merge --squash"
 alias gst="git status"
 alias gss="git status -s"
 
-alias gps="git push"
-alias gp="git pull"
+alias gpush="git push"
+alias gpushf="git push --force"
+alias gpull="git pull"
+alias gpullf="git pull -X theirs"
 
 # branch
 alias gb="git branch | cat"
