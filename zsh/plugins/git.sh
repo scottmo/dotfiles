@@ -11,12 +11,16 @@ alias grevertunstaged="git checkout ."
 alias grevertall="git reset --hard"
 alias greverttohead="git reset --hard HEAD^"
 alias grevertclean="!git reset --hard HEAD && git clean -d -f"
-greverttoremote() { git reset --hard origin/$(gbthis) }
+greverttoremote() {
+    git reset --hard origin/$(gbthis)
+}
 
 # diff
 alias gdiffstaged="git diff --cached"
 alias gdiffparent="git diff HEAD^ HEA"
-gdiffremote() { git diff $(gbthis) origin/$(gbthis) }
+gdiffremote() {
+    git diff $(gbthis) origin/$(gbthis)
+}
 
 # commit
 alias gcm="git commit --message"
@@ -33,6 +37,10 @@ alias gpush="git push"
 alias gpushf="git push --force"
 alias gpull="git pull"
 alias gpullf="git pull -X theirs"
+
+gitsqushall() {
+    git reset $(git commit-tree "HEAD^{tree}" "$@")
+}
 
 # branch
 alias gb="git branch | cat"
@@ -56,13 +64,27 @@ alias ghistorygraph="git log --graph --abbrev-commit --decorate --format=format:
 
 # util
 alias gshrink="git repack -a -d -f --depth=250 --window=250"
-gsync() { git pull upstream $1 && git push origin $1 }
-gcheckoutpr() { git fetch upstream pull/$1/head:$2 && git checkout $2 }
+gsync() {
+    git pull upstream $1 && git push origin $1
+}
+gcheckoutpr() {
+    git fetch upstream pull/$1/head:$2 && git checkout $2
+}
 
 # commit template
-gfeat() { git commit -m "feat: $1" }
-gfix() { git commit -m "fix: $1" }
-gwip() { git commit -m "wip: $1" }
-gchore() { git commit -m "chore: $1" }
-gtest() { git commit -m "test: $1" }
+gfeat() {
+    git commit -m "feat: $1"
+}
+gfix() {
+    git commit -m "fix: $1"
+}
+gwip() {
+    git commit -m "wip: $1"
+}
+gchore() {
+    git commit -m "chore: $1"
+}
+gtest() {
+    git commit -m "test: $1"
+}
 
