@@ -41,7 +41,7 @@ alias gpushf="git push --force"
 alias gpull="git pull"
 alias gpullf="git pull -X theirs"
 
-gitsqushall() {
+gitsquashall() {
     git reset $(git commit-tree "HEAD^{tree}" "$@")
 }
 
