@@ -34,7 +34,7 @@ alias gst="git status"
 alias gss="git status -s"
 
 gpushtrack() {
-    git push -u `gbthis`
+    git push -u origin `gbthis`
 }
 alias gpush="git push"
 alias gpushf="git push --force"
