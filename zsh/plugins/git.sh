@@ -54,6 +54,9 @@ alias gco="git checkout"
 alias gbtrack="git branch --set-upstream-to"
 alias gbuntrack="git rm -r --cached"
 alias gbthis="git rev-parse --abbrev-ref HEAD"
+gfetchremote() {
+    git fetch origin $1:$1
+}
 
 alias gremotes="git remote -v"
 
